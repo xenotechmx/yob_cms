@@ -1,0 +1,331 @@
+
+@font-face {
+  font-family: 'agaramon-bold';
+  src: url(AGaramondPro-Bold.otf) format("opentype");;
+}
+
+@font-face {
+  font-family: 'agaramon-bold-italic';
+  src: url(AGaramondPro-BoldItalic.otf) format("opentype");;
+}
+
+@font-face {
+  font-family: 'agaramon-italic';
+  src: url(AGaramondPro-Italic.otf) format("opentype");;
+}
+
+@font-face {
+  font-family: 'agaramon-regular';
+  src: url(AGaramondPro-Regular.otf) format("opentype");;
+}
+
+
+
+
+
+.agaramon-bold{
+    font-family: "agaramon-bold" !important;
+}
+.agaramon-bold-italic{
+    font-family: "agaramon-bold-italic" !important;
+}
+.agaramon-italic{
+    font-family: "agaramon-italic" !important;
+}
+.agaramon-regular{
+    font-family: "agaramon-regular" !important;
+}
+
+
+.cg{
+  color: #22b473;
+}
+
+
+.tdu{
+  text-decoration: underline;
+}
+
+
+
+.text-left{
+    text-align: left !important;
+}
+.text-center{
+    text-align: center !important;
+}
+.text-right{
+    text-align: right !important;
+}
+
+
+
+.ls{   letter-spacing: 3px;  }
+.ls1px{  letter-spacing: 1px; }
+.ls2px{  letter-spacing: 2px; }
+.ls3px{  letter-spacing: 3px; }
+.ls4px{  letter-spacing: 4px; }
+.ls5px{  letter-spacing: 5px; }
+.ls6px{  letter-spacing: 6px; }
+.ls7px{  letter-spacing: 7px; }
+.ls8px{  letter-spacing: 8px; }
+.ls9px{  letter-spacing: 9px; }
+.ls10px{  letter-spacing: 10px; }
+
+
+
+
+
+.fs1px{ font-size: 1px !important; }
+.fs2px{ font-size: 2px !important; }
+.fs3px{ font-size: 3px !important; }
+.fs4px{ font-size: 4px !important; }
+.fs5px{ font-size: 5px !important; }
+.fs6px{ font-size: 6px !important; }
+.fs7px{ font-size: 7px !important; }
+.fs8px{ font-size: 8px !important; }
+.fs9px{ font-size: 9px !important; }
+.fs10px{ font-size: 10px !important; }
+.fs11px{ font-size: 11px !important; }
+.fs12px{ font-size: 12px !important; }
+.fs13px{ font-size: 13px !important; }
+.fs14px{ font-size: 14px !important; }
+.fs15px{ font-size: 15px !important; }
+.fs16px{ font-size: 16px !important; }
+.fs17px{ font-size: 17px !important; }
+.fs18px{ font-size: 18px !important; }
+.fs19px{ font-size: 19px !important; }
+.fs20px{ font-size: 20px !important; }
+.fs21px{ font-size: 21px !important; }
+.fs22px{ font-size: 22px !important; }
+.fs23px{ font-size: 23px !important; }
+.fs24px{ font-size: 24px !important; }
+.fs25px{ font-size: 25px !important; }
+
+
+
+
+
+
+
+
+/* ----------- iPhone 4 and 4S ----------- */
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+    .fs1px{ font-size: 3px !important; }
+    .fs2px{ font-size: 4px !important; }
+    .fs3px{ font-size: 5px !important; }
+    .fs4px{ font-size: 6px !important; }
+    .fs5px{ font-size: 7px !important; }
+    .fs6px{ font-size: 8px !important; }
+    .fs7px{ font-size: 9px !important; }
+    .fs8px{ font-size: 10px !important; }
+    .fs9px{ font-size: 11px !important; }
+    .fs10px{ font-size: 12px !important; }
+    .fs11px{ font-size: 13px !important; }
+    .fs12px{ font-size: 14px !important; }
+    .fs13px{ font-size: 15px !important; }
+    .fs14px{ font-size: 16px !important; }
+    .fs15px{ font-size: 17px !important; }
+    .fs16px{ font-size: 18px !important; }
+    .fs17px{ font-size: 19px !important; }
+    .fs18px{ font-size: 20px !important; }
+    .fs19px{ font-size: 21px !important; }
+    .fs20px{ font-size: 22px !important; }
+    .fs21px{ font-size: 23px !important; }
+    .fs22px{ font-size: 24px !important; }
+    .fs23px{ font-size: 25px !important; }
+    .fs24px{ font-size: 26px !important; }
+    .fs25px{ font-size: 27px !important; }
+
+    p{ font-size: 20px !important; }
+    input[type="text"], input[type="email"], input[type="password"]{  font-size: 16px !important;  }
+    .green_button button{  font-size: 13px !important;  }
+    .calendar_style span{ font-size: 17px !important;  }
+    .calendar_mini td{  font-size: 8px !important;  }
+
+
+}
+
+/* ----------- Samsungs ----------- */
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 670px)
+  and (orientation: portrait) {
+
+    .fs1px{ font-size: 3px !important; }
+    .fs2px{ font-size: 4px !important; }
+    .fs3px{ font-size: 5px !important; }
+    .fs4px{ font-size: 6px !important; }
+    .fs5px{ font-size: 7px !important; }
+    .fs6px{ font-size: 8px !important; }
+    .fs7px{ font-size: 9px !important; }
+    .fs8px{ font-size: 10px !important; }
+    .fs9px{ font-size: 11px !important; }
+    .fs10px{ font-size: 12px !important; }
+    .fs11px{ font-size: 13px !important; }
+    .fs12px{ font-size: 14px !important; }
+    .fs13px{ font-size: 15px !important; }
+    .fs14px{ font-size: 16px !important; }
+    .fs15px{ font-size: 17px !important; }
+    .fs16px{ font-size: 18px !important; }
+    .fs17px{ font-size: 19px !important; }
+    .fs18px{ font-size: 20px !important; }
+    .fs19px{ font-size: 21px !important; }
+    .fs20px{ font-size: 22px !important; }
+    .fs21px{ font-size: 23px !important; }
+    .fs22px{ font-size: 24px !important; }
+    .fs23px{ font-size: 25px !important; }
+    .fs24px{ font-size: 26px !important; }
+    .fs25px{ font-size: 27px !important; }
+
+    p{ font-size: 20px !important; }
+    input[type="text"], input[type="email"], input[type="password"]{  font-size: 16px !important;  }
+    .green_button button{  font-size: 13px !important;  }
+    .calendar_style span{ font-size: 17px !important;  }
+    .calendar_mini td{  font-size: 8px !important;  }
+
+
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+    .fs1px{ font-size: 3px !important; }
+    .fs2px{ font-size: 4px !important; }
+    .fs3px{ font-size: 5px !important; }
+    .fs4px{ font-size: 6px !important; }
+    .fs5px{ font-size: 7px !important; }
+    .fs6px{ font-size: 8px !important; }
+    .fs7px{ font-size: 9px !important; }
+    .fs8px{ font-size: 10px !important; }
+    .fs9px{ font-size: 11px !important; }
+    .fs10px{ font-size: 12px !important; }
+    .fs11px{ font-size: 13px !important; }
+    .fs12px{ font-size: 14px !important; }
+    .fs13px{ font-size: 15px !important; }
+    .fs14px{ font-size: 16px !important; }
+    .fs15px{ font-size: 17px !important; }
+    .fs16px{ font-size: 18px !important; }
+    .fs17px{ font-size: 19px !important; }
+    .fs18px{ font-size: 20px !important; }
+    .fs19px{ font-size: 21px !important; }
+    .fs20px{ font-size: 22px !important; }
+    .fs21px{ font-size: 23px !important; }
+    .fs22px{ font-size: 24px !important; }
+    .fs23px{ font-size: 25px !important; }
+    .fs24px{ font-size: 26px !important; }
+    .fs25px{ font-size: 27px !important; }
+
+    p{ font-size: 20px !important; }
+    input[type="text"], input[type="email"], input[type="password"]{  font-size: 16px !important;  }
+    .green_button button{  font-size: 13px !important;  }
+    .calendar_style span{ font-size: 17px !important;  }
+    .calendar_mini td{  font-size: 8px !important;  }
+
+
+}
+ 
+/* ----------- iPhone 6 ----------- */
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+
+    .fs1px{ font-size: 7px !important; }
+    .fs2px{ font-size: 8px !important; }
+    .fs3px{ font-size: 9px !important; }
+    .fs4px{ font-size: 10px !important; }
+    .fs5px{ font-size: 11px !important; }
+    .fs6px{ font-size: 12px !important; }
+    .fs7px{ font-size: 13px !important; }
+    .fs8px{ font-size: 14px !important; }
+    .fs9px{ font-size: 15px !important; }
+    .fs10px{ font-size: 16px !important; }
+    .fs11px{ font-size: 17px !important; }
+    .fs12px{ font-size: 18px !important; }
+    .fs13px{ font-size: 19px !important; }
+    .fs14px{ font-size: 20px !important; }
+    .fs15px{ font-size: 21px !important; }
+    .fs16px{ font-size: 22px !important; }
+    .fs17px{ font-size: 23px !important; }
+    .fs18px{ font-size: 24px !important; }
+    .fs19px{ font-size: 25px !important; }
+    .fs20px{ font-size: 26px !important; }
+    .fs21px{ font-size: 27px !important; }
+    .fs22px{ font-size: 28px !important; }
+    .fs23px{ font-size: 29px !important; }
+    .fs24px{ font-size: 30px !important; }
+    .fs25px{ font-size: 31px !important; }
+
+    p{ font-size: 22px !important; }
+    input[type="text"], input[type="email"], input[type="password"]{  font-size: 18px !important;  }
+    .green_button button{  font-size: 15px !important;  }
+    .calendar_style span{ font-size: 20px !important;  }
+    .calendar_style td{ padding: 10px 0 !important; }
+    .calendar_mini td{  font-size: 9px !important;  }
+
+}
+
+
+/* ----------- iPhone 6+ ----------- */
+/* Portrait */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+
+    .fs1px{ font-size: 10px !important; }
+    .fs2px{ font-size: 11px !important; }
+    .fs3px{ font-size: 12px !important; }
+    .fs4px{ font-size: 13px !important; }
+    .fs5px{ font-size: 14px !important; }
+    .fs6px{ font-size: 15px !important; }
+    .fs7px{ font-size: 16px !important; }
+    .fs8px{ font-size: 17px !important; }
+    .fs9px{ font-size: 18px !important; }
+    .fs10px{ font-size: 19px !important; }
+    .fs11px{ font-size: 20px !important; }
+    .fs12px{ font-size: 21px !important; }
+    .fs13px{ font-size: 22px !important; }
+    .fs14px{ font-size: 23px !important; }
+    .fs15px{ font-size: 24px !important; }
+    .fs16px{ font-size: 25px !important; }
+    .fs17px{ font-size: 26px !important; }
+    .fs18px{ font-size: 27px !important; }
+    .fs19px{ font-size: 28px !important; }
+    .fs20px{ font-size: 29px !important; }
+    .fs21px{ font-size: 30px !important; }
+    .fs22px{ font-size: 31px !important; }
+    .fs23px{ font-size: 32px !important; }
+    .fs24px{ font-size: 33px !important; }
+    .fs25px{ font-size: 34px !important; }
+
+    p{ font-size: 22px !important; }
+    input[type="text"], input[type="email"], input[type="password"]{  font-size: 20px !important;  }
+    .green_button button{  font-size: 17px !important;  }
+    .calendar_style span{ font-size: 22px !important;  }
+    .calendar_style td{ padding: 13px 0 !important; }
+    .calendar_mini td{  font-size: 10px !important;  }
+
+}
+
+
+
+
+
+

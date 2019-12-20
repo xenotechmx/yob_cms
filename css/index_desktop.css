@@ -1,0 +1,65 @@
+.container{
+    max-width: 600px;
+}
+
+#login .container{
+    max-width: 350px;
+}
+
+.button_bg button {
+    margin: 0 auto;
+    display: block;
+    padding: 8px 0;
+    width: 100%;
+    max-width: 300px;
+}
+
+#loading {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+#loading .content_loading {
+    margin-top: 15%;
+}
+
+.colm-left-header {
+    width: 5%;
+}
+
+.colm-center-header{
+    width: 90%;
+}
+
+.colm-right-header{
+    width: 5%;
+}
+
+.logo_home{
+    width: 80%;
+}
+
+#perfil .job_section{
+    margin-bottom: 15px;
+}
+
+#perfil .job_section .left_side{
+    width: 90%;
+}
+
+#perfil .job_section .right_side {
+    width: 10%;
+}
+
+.top_filters{
+    padding: 0 0 15px 0;
+}
+
+.jobs_list, #notificaciones .notificaciones_list{
+    overflow-y: auto;
+}
+
+.menu {
+    width: 30%;
+    padding-right: 70%;
+    background-size: 0 !important;
+}

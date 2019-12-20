@@ -1,0 +1,67 @@
+
+input[type="text"], input[type="email"], input[type="password"], select{
+  background: #f9f4e5;
+  outline: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "agaramon-regular";
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  height: initial;
+  padding: 10px 0 7px 0;
+  display: inline-block;
+  margin-bottom: 15px;
+  color: #696b6e;  
+}
+
+.width_inherit{
+  width: inherit !important;
+  padding-left: 10px;
+  padding-right: 10px;  
+}
+
+.green_button{
+  background: #22b473;
+  display: inline-block;
+  padding: 7px;  
+}
+
+.green_button button{
+  border: 1px solid white;
+  background: none;
+  font-family: "agaramon-regular";
+  color: white;
+  font-size: 11px;
+  font-weight: 100;
+  text-shadow: none;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  padding: 11px 27px 8px 27px;
+}
+
+
+.h1px{  height: 1px;  }
+
+.h5px{  height: 5px;  }
+.h6px{  height: 6px;  }
+.h7px{  height: 7px;  }
+.h8px{  height: 8px;  }
+.h9px{  height: 9px;  }
+.h10px{  height: 10px;  }
+.h11px{  height: 11px;  }
+.h12px{  height: 12px;  }
+.h13px{  height: 13px;  }
+.h14px{  height: 14px;  }
+.h15px{  height: 15px;  }
+.h16px{  height: 16px;  }
+.h17px{  height: 17px;  }
+.h18px{  height: 18px;  }
+.h19px{  height: 19px;  }
+.h20px{  height: 20px;  }
+.h25px{  height: 25px;  }
+.h30px{  height: 30px;  }
+.h35px{  height: 35px;  }

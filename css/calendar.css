@@ -1,0 +1,198 @@
+
+.calendar_style{
+    width: 100%;
+     table-layout: fixed;
+}
+.calendar_style, .calendar_style td{
+    border: 0 !important;
+}
+
+.calendar_style td{
+    width: 12.5%;
+    padding: 7px 0;
+    height: 22px !important;
+    display: inline-block;
+    margin: 3px 0;
+}
+
+ .calendar_style span{
+    /*width: 37px;*/
+    display: inline-block;
+    /*margin: 7px 28px;
+    padding: 8px 4px;*/
+    font-size: 11px;
+    color: black;
+    font-weight: bold;
+    color: #696b6e;
+ }
+
+ 
+.calendar_style .active{
+    border-radius: 100px;
+    background: url("../img/bg_td.png") center center no-repeat;
+    background-size: contain;
+}
+ 
+.calendar_style .active span{
+    color: white !important;
+    font-weight: 100;
+    text-shadow: none;
+}
+
+.calendar_mini{
+    table-layout: fixed;
+}
+.calendar_mini .active{
+    background: #21c231;
+    border-radius: 100px;
+    height: 25px;
+    display: inline-block;
+    width: 25px;
+    margin: 1px 0;
+    padding: 9px 6px 0px 5px;
+    color: black;
+}
+
+.calendar_style .week_days {
+    font-size: 11px;
+    color: #696b6e;
+    height: 13px !important;
+    /*padding-bottom: 13px;*/
+    font-family: "agaramon-italic";
+}
+
+.calendar_style .mes_anterior, .calendar_style .mes_despues{
+    color: #c8c8c8;
+    font-family: "agaramon-regular";        
+}
+
+.calendar_style span{
+    font-family: "agaramon-regular";         
+}
+
+.calendar_style .semana_label span{
+    margin: 0;
+    /*padding: 13px 10px;*/
+    font-family: "agaramon-regular";    
+}
+
+ 
+
+
+
+.calendar_style tr td:nth-child(2){                     color: #22b473;     }
+.calendar_style .semana_row_1 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_style .semana_row_2 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_style .semana_row_3 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_style .semana_row_4 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_style .semana_row_5 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_style .semana_row_6 td:nth-child(2) .month_day{     color: #22b473;     }
+
+.current_date_label{
+    color: #ef4035; 
+}
+
+.current_date_label p{
+    display: inline-block;
+    margin: 0;      
+}
+
+.current_date_label .numero_dia_fecha{
+    font-size: 85px;
+    font-weight: 100;
+    line-height: 0;
+}
+.current_date_label .mes_anio_fecha{
+    font-size: 29px;
+    font-weight: 400;    
+}
+ 
+
+.mes_anio_fecha{
+    font-size: 15px;
+    font-family: "agaramon-bold";
+    width: 100%;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #b3b3b3;
+    padding: 2px 0 0px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.calendar_mini{
+    width: 100%;
+    border: 0;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.calendar_mini .active{
+    background: #21c231;
+    border-radius: 100px;
+    height: 25px;
+    display: inline-block;
+    width: 25px;
+    margin: 1px 0;
+    padding: 9px 6px 0px 5px;
+    color: black;
+}
+
+.calendar_mini .days, .calendar_mini .week_days, .calendar_mini .semana_label{
+    color: #696b6e;
+}
+
+.calendar_mini .week_days{
+    font-size: 6px !important;
+    font-family: "agaramon-italic";
+}
+
+.calendar_mini .mes_anterior, .calendar_mini .mes_despues{
+    color: #c8c8c8;
+}
+
+.calendar_mini td {
+    font-weight: bold;
+    padding: 5px 0px;
+    border: 0;
+    font-size: 5px;
+    font-family: "agaramon-regular";    
+}
+
+.month_calendar_mini{
+    font-size: 15px !important;
+    font-family: "agaramon-bold" !important;
+    width: 100% !important;
+    border-top: 1px solid #b3b3b3 !important;
+    border-bottom: 1px solid #b3b3b3 !important;
+    padding: 2px 0 0px 0 !important;
+    color: #696b6e;
+    text-align: left;
+}
+
+.calendar_mini tr td:nth-child(2){                     color: #22b473;     }
+.calendar_mini .semana_row_1 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_mini .semana_row_2 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_mini .semana_row_3 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_mini .semana_row_4 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_mini .semana_row_5 td:nth-child(2) .month_day{     color: #22b473;     }
+.calendar_mini .semana_row_6 td:nth-child(2) .month_day{     color: #22b473;     }
+
+
+ 
