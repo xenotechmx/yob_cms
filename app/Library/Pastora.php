@@ -376,12 +376,12 @@ class Pastora
 
             } else {
                 $response["error"] = true;
-                $response["data"] = $card_info["data"].env("PAYU_MERCHANTID");
+                $response["data"] = $card_info["data"]." zht ".env("PAYU_MERCHANTID");
             }
 
         } catch (\PayUException $e) {
             $response["error"] = true;
-            $response["data"] = $e->getMessage();
+            $response["data"] = $e->getMessage()." xntch ";
         }
 
         return $response;
