@@ -488,7 +488,7 @@ class Pastora
 
         } catch (\PayUException $e) {
             $response["error"] = true;
-            $response["data"] = $e->getMessage()." dmn ";
+            $response["data"] = $e->getMessage().' rbt '.env('PAYU_MERCHANTID');
         }
 
         return $response;
