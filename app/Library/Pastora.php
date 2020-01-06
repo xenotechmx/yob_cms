@@ -259,7 +259,8 @@ class Pastora
 
         \PayU::$apiKey = env("PAYU_APIKEY");
         \PayU::$apiLogin = env("PAYU_APILOGIN");
-        \PayU::$merchantId = env("PAYU_MERCHANTID");
+        //\PayU::$merchantId = env("PAYU_MERCHANTID");
+        \PayU::$merchantId = "808159";
         \PayU::$language = \SupportedLanguages::ES;
         \PayU::$isTest = env("PAYU_ISTEST");
 
