@@ -2268,7 +2268,7 @@ class APIController extends Controller
 
         } else {
             $response["error"] = true;
-            $response["message"] = $result["data"];
+            $response["message"] = $result["data"]." lkd ";
             return response()->json($response, 504);
         }
 
