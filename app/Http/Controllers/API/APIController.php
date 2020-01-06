@@ -1913,7 +1913,7 @@ class APIController extends Controller
 
         } else {
             $response["error"] = true;
-            $response["message"] = $result["data"];
+            $response["message"] = '';
             return response()->json($response, 504);
         }
 
@@ -1961,7 +1961,7 @@ class APIController extends Controller
 
             } else {
                 $response["error"] = true;
-                $response["message"] = $result["data"]."payment";
+                $response["message"] = $result["data"];
                 return response()->json($response, 504);
             }
 
@@ -2268,7 +2268,7 @@ class APIController extends Controller
 
         } else {
             $response["error"] = true;
-            $response["message"] = $result["data"]." lkd ";
+            $response["message"] = $result["data"];
             return response()->json($response, 504);
         }
 
