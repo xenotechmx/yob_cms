@@ -1913,7 +1913,7 @@ class APIController extends Controller
 
         } else {
             $response["error"] = true;
-            $response["message"] = $result["data"]." xnt ";
+            $response["message"] = $result["data"];
             return response()->json($response, 504);
         }
 

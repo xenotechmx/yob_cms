@@ -488,7 +488,7 @@ class Pastora
 
         } catch (\PayUException $e) {
             $response["error"] = true;
-            $response["data"] = $e->getMessage();
+            $response["data"] = $e->getMessage()." dmn ";
         }
 
         return $response;
