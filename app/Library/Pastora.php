@@ -259,8 +259,7 @@ class Pastora
 
         \PayU::$apiKey = env("PAYU_APIKEY");
         \PayU::$apiLogin = env("PAYU_APILOGIN");
-        //\PayU::$merchantId = env("PAYU_MERCHANTID");
-        \PayU::$merchantId = "808159";
+        \PayU::$merchantId = env("PAYU_MERCHANTID");
         \PayU::$language = \SupportedLanguages::ES;
         \PayU::$isTest = env("PAYU_ISTEST");
 
@@ -489,7 +488,7 @@ class Pastora
 
         } catch (\PayUException $e) {
             $response["error"] = true;
-            $response["data"] = $e->getMessage().' rbt '.env('PAYU_MERCHANTID');
+            $response["data"] = $e->getMessage().' zht '.env("PAYU_APIKEY").' - '.env("PAYU_APILOGIN").' - '.env("PAYU_MERCHANTID").' - '.env("PAYU_ISTEST");
         }
 
         return $response;
