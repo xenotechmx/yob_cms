@@ -1872,7 +1872,7 @@ class APIController extends Controller
         //Si no hubo error
         if (!$result["error"]) {
 
-            mail("jair.lomas@metodika.mx", "Yob - Solicitud pago en " . $request->store_name, "Se ha solicitado un pago en Yob con status '" . $result["data"]->state . "' Referencia: " . $reference_code);
+            //mail("jair.lomas@metodika.mx", "Yob - Solicitud pago en " . $request->store_name, "Se ha solicitado un pago en Yob con status '" . $result["data"]->state . "' Referencia: " . $reference_code);
 
             if ($result["data"]->state == "DECLINED") {
 
@@ -1977,7 +1977,7 @@ class APIController extends Controller
 
         if (!$payment_result["error"]) {
 
-            mail("jair.lomas@metodika.mx", "Yob - Pago con tarjeta", "Se ha realizado un pago en Yob con status '" . $payment_result["data"]->state . "' Referencia: " . $reference_code);
+            //mail("jair.lomas@metodika.mx", "Yob - Pago con tarjeta", "Se ha realizado un pago en Yob con status '" . $payment_result["data"]->state . "' Referencia: " . $reference_code);
 
             if ($payment_result["data"]->state == "DECLINED") {
                 //Pago no procesado
@@ -2044,7 +2044,7 @@ class APIController extends Controller
         $body = @file_get_contents('php://input');
         $data = json_decode($body);
 
-        mail("jair.lomas@metodika.mx", "YOB WEBHOOK ", $body);
+        //mail("jair.lomas@metodika.mx", "YOB WEBHOOK ", $body);
 
         File::put("webhook" . date("Y-m-d-H-i-s") . "_.txt", $body);
 
@@ -2241,7 +2241,7 @@ class APIController extends Controller
         //Si no hubo error
         if (!$result["error"]) {
 
-            mail("jair.lomas@metodika.mx", "Yob - Solicitud pago en " . $request->store_name, "Se ha solicitado un pago en Yob con status '" . $result["data"]->state . "' Referencia: " . $reference_code);
+            //mail("jair.lomas@metodika.mx", "Yob - Solicitud pago en " . $request->store_name, "Se ha solicitado un pago en Yob con status '" . $result["data"]->state . "' Referencia: " . $reference_code);
 
             if ($result["data"]->state == "DECLINED") {
 

@@ -488,7 +488,7 @@ class Pastora
 
         } catch (\PayUException $e) {
             $response["error"] = true;
-            $response["data"] = $e->getMessage().' zht '.env("PAYU_APIKEY").' - '.env("PAYU_APILOGIN").' - '.env("PAYU_MERCHANTID").' - '.env("PAYU_ISTEST");
+            $response["data"] = $e->getMessage();
         }
 
         return $response;
