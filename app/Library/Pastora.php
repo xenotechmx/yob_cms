@@ -376,7 +376,7 @@ class Pastora
 
             } else {
                 $response["error"] = true;
-                $response["data"] = $card_info["data"];
+                $response["data"] = $card_info["data"].env("PAYU_MERCHANTID");
             }
 
         } catch (\PayUException $e) {
