@@ -498,7 +498,7 @@
     <!-- footer -->
     <!-- ============================================================== -->
     <footer class="footer">
-        <a href="https://metodika.mx" target="_blank">© 2019 Metodika</a>
+        Engineered by <a href="https://xenotech.mx" target="_blank">Xenotech</a> © {{date('Y')}}
     </footer>
     <!-- ============================================================== -->
     <!-- End footer -->
