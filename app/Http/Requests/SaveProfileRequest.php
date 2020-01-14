@@ -32,7 +32,6 @@ class SaveProfileRequest extends FormRequest
             "postal_code" => "required",
             "state" => "required",
             "municipaly" => "required",
-            "colony" => "required",
             "phone" => "required",
             "email" => "required|email|unique:app_users,email,".$this->user_id,
         ];
