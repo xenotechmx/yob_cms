@@ -11,7 +11,7 @@ use MetodikaTI\Job;
 use MetodikaTI\Library\Pastora;
 use MetodikaTI\PackagesBuyedByUser;
 
-require_once('public/PayU/lib/PayU.php');
+require_once('/var/www/yob_cms/public/PayU/lib/PayU.php');
 
 class CheckPaymentPendingWithOxxo extends Command
 {
