@@ -9,7 +9,7 @@ use MetodikaTI\Http\Controllers\API\APIController;
 use MetodikaTI\Library\Pastora;
 use MetodikaTI\PackagesBuyedByUser;
 
-require_once('public/PayU/lib/PayU.php');
+require_once('../../public/PayU/lib/PayU.php');
 
 class CheckPaymentPendingWithCard extends Command
 {
