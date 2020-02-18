@@ -1126,11 +1126,10 @@ class APIController extends Controller
         if ($app_user->token_card != "") {
             $card_payment = Pastora::getCardInfoByToken($app_user->id, $app_user->token_card);
 
-            if ($card_payment["data"] != "") {
+            if ($card_payment["data"] != "" && $card_payment["data"]->maskedNumber!=null) {
                 $card_payment["data"]->maskedNumber = chunk_split($card_payment["data"]->maskedNumber, 4, ' ');
                 $card_payment["data"]->card_type_method = $app_user->card_type;
             }
-
 
         }
 

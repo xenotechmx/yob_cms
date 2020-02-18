@@ -14,6 +14,14 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('PAYU_APIKEY', 'A8Ry6B4wY6Nsh22wMGUSGz8Slf'),
+    'name' => env('PAYU_APILOGIN', '62vtqgIZOMAaq05'),
+    'name' => env('PAYU_MERCHANTID', '808159'),
+    'name' => env('PAYU_ISTEST', 'false'),
+    'name' => env('PAYU_ACCOUNTID', '815225'),
+    'name' => env('setPaymentsCustomUrl', 'https://api.payulatam.com/payments-api/4.0/service.cgi'),
+    'name' => env('setReportsCustomUrl', 'https://api.payulatam.com/reports-api/4.0/service.cgi'),
+    'name' => env('setSubscriptionsCustomUrl', 'https://api.payulatam.com/payments-api/rest/v4.9/'),
 
     /*
     |--------------------------------------------------------------------------
