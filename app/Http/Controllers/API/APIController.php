@@ -1982,7 +1982,7 @@ class APIController extends Controller
             if ($payment_result["data"]->state == "DECLINED") {
                 //Pago no procesado
                 $response["error"] = true;
-                $response["message"] = "No hemos podido generar el cobro el banco emisor ha rechazado la transacción, inténtalo nuevamente o ingresa otra tarjeta valida.";
+                $response["message"] = "No hemos podido generar el cobro el banco emisor ha rechazado la transacción, inténtalo nuevamente o ingresa otra tarjeta válida";
                 return response()->json($response, 504);
             } else if ($payment_result["data"]->state == "APPROVED") {
 
@@ -2016,7 +2016,7 @@ class APIController extends Controller
         } else {
 
             $response["error"] = true;
-            $response["message"] = "No hemos podido generar el cobro, inténtalo nuevamente o ingresa otra tarjeta valida.";
+            $response["message"] = "No hemos podido generar el cobro, inténtalo nuevamente o ingresa otra tarjeta válida.";
             return response()->json($response, 504);
         }
 
