@@ -1974,6 +1974,8 @@ class APIController extends Controller
         //Hacemos el cobro de tarjeta
         $payment_result = Pastora::makePaymentWithToken(env("PAYU_ACCOUNTID"), $reference_code, "Compra de plan " . $package->name, $app_user->email, $package->price, $token_card, $app_user);
 
+        dump(env("PAYU_ACCOUNTID"), $reference_code, "Compra de plan " . $package->name, $app_user->email, $package->price, $token_card, $app_user);
+
         if (!$payment_result["error"]) {
 
             //mail("jair.lomas@metodika.mx", "Yob - Pago con tarjeta", "Se ha realizado un pago en Yob con status '" . $payment_result["data"]->state . "' Referencia: " . $reference_code);
