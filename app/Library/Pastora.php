@@ -17,8 +17,8 @@ use Permission;
 use Session;
 
 
-if (file_exists('PayU/lib/PayU.php')) {
-    require_once('PayU/lib/PayU.php');
+if (file_exists('/var/www/yob_cms/public/PayU/lib/PayU.php')) {
+    require_once('/var/www/yob_cms/public/PayU/lib/PayU.php');
 }
 
 class Pastora
