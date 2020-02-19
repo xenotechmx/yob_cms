@@ -69,10 +69,7 @@ use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 use Money\Money;
 
-
-if (file_exists('PayU/lib/PayU.php')) {
-    require_once('PayU/lib/PayU.php');
-}
+require_once('PayU/lib/PayU.php');
 
 class APIController extends Controller
 {
