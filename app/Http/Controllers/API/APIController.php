@@ -1120,7 +1120,7 @@ class APIController extends Controller
         $card_payment["data"] = "";
 
         $app_user = AppUser::find($request->app_user_id);
-        return response()->json($app_user);
+        //return response()->json($app_user);
         if ($app_user->token_card != "") {
             $card_payment = Pastora::getCardInfoByToken($app_user->id, $app_user->token_card);
             

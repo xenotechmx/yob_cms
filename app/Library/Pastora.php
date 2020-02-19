@@ -325,10 +325,10 @@ class Pastora
 
 
         try {
-            
+
             //Consultamos la informacion del token
             $card_info = self::getCardInfoByToken($APP_USER->id, $TOKEN_ID);
-            dd('esto llega ', $APP_USER->id, $TOKEN_ID);
+
             if (!$card_info["error"]) {
 
                 $parameters = array(

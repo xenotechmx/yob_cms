@@ -80,17 +80,17 @@ abstract class PayU {
 	/**
 	 * The merchant API key
 	 */
-	public static  $apiKey = null;
+	public static  $apiKey = 'A8Ry6B4wY6Nsh22wMGUSGz8Slf';
 
 	/**
 	 * The merchant API Login
 	 */
-	public static  $apiLogin = null;
+	public static  $apiLogin = '62vtqgIZOMAaq05';
 
 	/**
 	 * The merchant Id
 	 */
-	public static  $merchantId = null;
+	public static  $merchantId = '808159';
 
 	/**
 	 * The request language
