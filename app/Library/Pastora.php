@@ -17,8 +17,8 @@ use Permission;
 use Session;
 
 
-if (file_exists('/var/www/yob_cms/public/PayU/lib/PayU.php')) {
-    require_once('/var/www/yob_cms/public/PayU/lib/PayU.php');
+if (file_exists('PayU/lib/PayU.php')) {
+    require_once('PayU/lib/PayU.php');
 }
 
 class Pastora
@@ -363,8 +363,6 @@ class Pastora
                     ////Cookie de la sesión actual.
                     //\PayUParameters::USER_AGENT=>"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
                 );
-
-                dump($parameters);
 
                 $result = \PayUPayments::doAuthorizationAndCapture($parameters);
 
