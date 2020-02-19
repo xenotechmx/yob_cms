@@ -255,11 +255,11 @@ class Pastora
     public static function setEnvirotmentPayU()
     {
 
-        \PayU::$apiKey = env("PAYU_APIKEY");
-        \PayU::$apiLogin = env("PAYU_APILOGIN");
-        \PayU::$merchantId = env("PAYU_MERCHANTID");
+        \PayU::$apiKey = 'A8Ry6B4wY6Nsh22wMGUSGz8Slf';
+        \PayU::$apiLogin = '62vtqgIZOMAaq05';
+        \PayU::$merchantId = '808159';
         \PayU::$language = \SupportedLanguages::ES;
-        \PayU::$isTest = env("PAYU_ISTEST");
+        \PayU::$isTest = 'false';
 
         \Environment::setPaymentsCustomUrl(env("setPaymentsCustomUrl"));
         \Environment::setReportsCustomUrl(env("setReportsCustomUrl"));
