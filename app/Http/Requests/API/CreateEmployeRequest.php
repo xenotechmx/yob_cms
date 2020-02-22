@@ -41,9 +41,6 @@ class CreateEmployeRequest extends FormRequest
 
         //$rules["business_name"] = "required";
 
-        $rules["address.address"] = "required";
-        $rules["address.interior_exterior_number"] = "required";
-        $rules["address.postal_code"] = "required";
         $rules["address.country"] = "required";
         $rules["address.state"] = "required";
         $rules["address.municipaly"] = "required";
