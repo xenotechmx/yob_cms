@@ -229,9 +229,6 @@ class APIController extends Controller
 
             $bussines_address = new BussinesAddress();
             $bussines_address->app_user_id = $data->id;
-            $bussines_address->address = $request->address["address"];
-            $bussines_address->interior_exterior_number = $request->address["interior_exterior_number"];
-            $bussines_address->postal_code = $request->address["postal_code"];
             $bussines_address->country = $request->address["country"];
             $bussines_address->state = $request->address["state"];
             $bussines_address->municipaly = $request->address["municipaly"];
@@ -1066,9 +1063,6 @@ class APIController extends Controller
             $bussines_information->save();
 
             $bussines_address = BussinesAddress::where("app_user_id", $request->app_user_id)->first();
-            $bussines_address->address = $request->address["address"];
-            $bussines_address->interior_exterior_number = $request->address["interior_exterior_number"];
-            $bussines_address->postal_code = $request->address["postal_code"];
             $bussines_address->country = $request->address["country"];
             $bussines_address->state = $request->address["state"];
             $bussines_address->municipaly = $request->address["municipaly"];
