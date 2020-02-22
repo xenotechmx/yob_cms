@@ -24,10 +24,9 @@ class UpdateInvoiceInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            //"invoice.social_reason" => "required",
-            "invoice.comercial_name" => "required",
+            "invoice.social_reason" => "required",
+            "invoice.cp" => "required",
             "invoice.rfc" => "required",
-            //"invoice.fiscal_address" => "required",
             "invoice.email_send_invoice" => "required",
         ];
     }
@@ -38,6 +37,7 @@ class UpdateInvoiceInformationRequest extends FormRequest
         return [
             "invoice.social_reason.required" => "El campo 'Razón social' es requerido.",
             "invoice.comercial_name.required" => "El campo 'Nombre comercial' es requerido.",
+            "invoice.rfc.required" => "El campo 'CP' es requerido.",
             "invoice.rfc.required" => "El campo 'RFC' es requerido.",
             "invoice.fiscal_address.required" => "El campo 'Domicilio fiscal' es requerido.",
             "invoice.email_send_invoice.required" => "El campo 'Correo para enviar facturas' es requerido.",
