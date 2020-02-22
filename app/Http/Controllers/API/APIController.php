@@ -715,6 +715,9 @@ class APIController extends Controller
         if ($request->puesto_area != "") {
             $jobs = $jobs->where("jobs.job_title", "LIKE", "%" . $request->puesto_area . "%");
 
+            $jobs = $jobs->whereHas("employer", function ($query) use ($request) {
+                $query->where("app_users.business_name", "like", "%" . $request->puesto_area . "%");
+            });
         }
 
         if ($request->municipio != "") {
@@ -752,11 +755,9 @@ class APIController extends Controller
 
         if ($request->search_job["puesto_area"] != "") {
             $jobs = $jobs->where("jobs.job_title", "LIKE", "%" . $request->search_job["puesto_area"] . "%");
-        }
 
-        if ($request->search_job["empresa"] != "") {
             $jobs = $jobs->whereHas("employer", function ($query) use ($request) {
-                $query->where("app_users.business_name", "like", "%" . $request->search_job["empresa"] . "%");
+                $query->where("app_users.business_name", "like", "%" . $request->search_job["puesto_area"] . "%");
             });
         }
 
