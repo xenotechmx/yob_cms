@@ -714,9 +714,7 @@ class APIController extends Controller
 
         if ($request->puesto_area != "") {
             $jobs = $jobs->where("jobs.job_title", "LIKE", "%" . $request->puesto_area . "%");
-        }
 
-        if ($request->empresa != "") {
             $jobs = $jobs->whereHas("employer", function ($query) use ($request) {
                 $query->where("app_users.business_name", "like", "%" . $request->empresa . "%");
             });
