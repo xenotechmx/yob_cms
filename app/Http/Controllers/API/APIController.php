@@ -711,13 +711,15 @@ class APIController extends Controller
         $response["message"] = "";
 
         $jobs = new Job();
-
+        $jobs_per_title = new Job();
+        $jobs_per_business = new Job();
         if ($request->puesto_area != "") {
-            $jobs = $jobs->where("jobs.job_title", "LIKE", "%" . $request->puesto_area . "%");
+            $jobs_per_title = $jobs_per_title->where("jobs.job_title", "LIKE", "%" . $request->puesto_area . "%");
 
-            $jobs = $jobs->whereHas("employer", function ($query) use ($request) {
+            $jobs_per_business = $jobs_per_business->whereHas("employer", function ($query) use ($request) {
                 $query->where("app_users.business_name", "like", "%" . $request->puesto_area . "%");
             });
+            $jobs = array_merge($jobs_per_title, $jobs_per_business);
         }
 
         if ($request->municipio != "") {
@@ -750,15 +752,17 @@ class APIController extends Controller
         $response["message"] = "";
 
         $jobs = new Job();
+        $jobs_per_title = new Job();
+        $jobs_per_business = new Job();
         $limit = 8;
         $offset = $request->count_get_jobs * $limit;
 
         if ($request->search_job["puesto_area"] != "") {
-            $jobs = $jobs->where("jobs.job_title", "LIKE", "%" . $request->search_job["puesto_area"] . "%");
-
-            $jobs = $jobs->whereHas("employer", function ($query) use ($request) {
+            $jobs_per_title = $jobs_per_title->where("jobs.job_title", "LIKE", "%" . $request->search_job["puesto_area"] . "%");
+            $jobs_per_business = $jobs_per_business->whereHas("employer", function ($query) use ($request) {
                 $query->where("app_users.business_name", "like", "%" . $request->search_job["puesto_area"] . "%");
             });
+            $jobs = array_merge($jobs_per_title, $jobs_per_business);
         }
 
         if ($request->search_job["municipio"] != "") {
