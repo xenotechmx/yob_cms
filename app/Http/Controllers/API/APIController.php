@@ -35,6 +35,7 @@ use MetodikaTI\Http\Requests\API\SavePerfilRequest;
 use MetodikaTI\Http\Requests\API\SearchCandidatesRequest;
 use MetodikaTI\Http\Requests\API\SearchJobByBusinessIdRequest;
 use MetodikaTI\Http\Requests\API\SearchJobRequest;
+use MetodikaTI\Http\Requests\API\NewSearchJobRequest;
 use MetodikaTI\Http\Requests\API\SendMessageRequest;
 use MetodikaTI\Http\Requests\API\UpdateInvoiceInformationRequest;
 use MetodikaTI\Http\Requests\SaveJobExperienceRequest;
@@ -69,7 +70,7 @@ use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 use Money\Money;
 
-require_once('/var/www/yob_cms/public/PayU/lib/PayU.php');
+require_once(base_path().'/public/PayU/lib/PayU.php');
 
 class APIController extends Controller
 {
@@ -693,6 +694,55 @@ class APIController extends Controller
             return response()->json($response);
         } else {
             $response["message"] = "No hemos podido eliminar la experiencia de estudio, intentalo nuevamente.";
+            return response()->json($response, 504);
+        }
+
+    }
+
+    public function new_search_jobs(NewSearchJobRequest $request){
+        $response = array();
+        $response["data"] = "";
+        $response["message"] = "";
+
+        if($request->location == ''){ //searching without location
+            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->job . "%")
+                            ->where("status", "publish")
+                            ->where("publish", 1); //jobs by title
+            $ids_by_title = $jobs_by_title->pluck('id');
+
+            $jobs_by_employer = Job::whereHas("employer", function ($query) use ($request) { 
+                                    $query->where("app_users.business_name", "like", "%" . $request->job . "%"); 
+                                })
+                                ->whereNotIn('id',$ids_by_title)
+                                ->where("status", "publish")
+                                ->where("publish", 1); //jobs by employer
+        }
+        else{//searching with location
+            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->job . "%")
+                            ->whereRaw("( jobs.colony LIKE '%" . $request->location . "%' OR jobs.municipaly LIKE '%" . $request->location . "%' OR jobs.state LIKE '%" . $request->location . "%' )")
+                            ->where("status", "publish")
+                            ->where("publish", 1); //jobs by title
+            $ids_by_title = $jobs_by_title->pluck('id');
+
+            $jobs_by_employer = Job::whereHas("employer", function ($query) use ($request) { 
+                                    $query->where("app_users.business_name", "like", "%" . $request->job . "%"); 
+                                })
+                                ->whereRaw("( jobs.colony LIKE '%" . $request->location . "%' OR jobs.municipaly LIKE '%" . $request->location . "%' OR jobs.state LIKE '%" . $request->location . "%' )")
+                                ->whereNotIn('id',$ids_by_title)
+                                ->where("status", "publish")
+                                ->where("publish", 1); //jobs by employer
+        }
+        
+        if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0) {
+
+            $jobs_by_title = $jobs_by_title->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
+            $jobs_by_employer = $jobs_by_employer->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
+
+            $jobs = array_merge($jobs_by_title, $jobs_by_employer);
+            return response()->json($jobs);
+
+        } else {
+            $response["message"] = "No existen empleos con los criterios de búsqueda ingresados.";
             return response()->json($response, 504);
         }
 

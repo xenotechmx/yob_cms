@@ -25,6 +25,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function () {
     Route::post("get_study_experiences", "API\APIController@get_study_experiences");
     Route::post("delete_study_experience", "API\APIController@delete_study_experience");
 
+    Route::post("new_search_jobs", "API\APIController@new_search_jobs");
     Route::post("search_jobs", "API\APIController@search_jobs");
     Route::post("get_job", "API\APIController@get_job");
     Route::post("user_apply_job", "API\APIController@user_apply_job");
