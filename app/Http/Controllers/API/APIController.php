@@ -790,7 +790,7 @@ class APIController extends Controller
     }
 
 
-    public function get_jobs_paginated(Request $request)
+    public function get_jobs_paginated(NewSearchJobRequest $request)
     {
 
         //puesto_area
