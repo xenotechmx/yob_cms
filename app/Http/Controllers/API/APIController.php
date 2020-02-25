@@ -790,7 +790,7 @@ class APIController extends Controller
     }
 
 
-    public function get_jobs_paginated(NewSearchJobRequest $request)
+    public function get_jobs_paginated(Request $request)
     {
 
         //puesto_area
@@ -848,7 +848,7 @@ class APIController extends Controller
                 ->orderBy("highlight_job", "DESC")
                 ->orderBy("updated_at", "DESC")
                 ->get()->toArray();
-
+                
             $jobs = array_merge($jobs_by_title, $jobs_by_employer);
         }
 
