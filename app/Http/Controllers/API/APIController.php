@@ -705,13 +705,13 @@ class APIController extends Controller
         $response["message"] = "";
 
         if($request->location == ''){ //searching without location
-            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->job . "%")
+            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->puesto_area . "%")
                             ->where("status", "publish")
                             ->where("publish", 1); //jobs by title
             $ids_by_title = $jobs_by_title->pluck('id');
 
             $jobs_by_employer = Job::whereHas("employer", function ($query) use ($request) { 
-                                    $query->where("app_users.business_name", "like", "%" . $request->job . "%"); 
+                                    $query->where("app_users.business_name", "like", "%" . $request->puesto_area . "%"); 
                                 })
                                 ->whereNotIn('id',$ids_by_title)
                                 ->where("status", "publish")
@@ -725,7 +725,7 @@ class APIController extends Controller
             $ids_by_title = $jobs_by_title->pluck('id');
 
             $jobs_by_employer = Job::whereHas("employer", function ($query) use ($request) { 
-                                    $query->where("app_users.business_name", "like", "%" . $request->job . "%"); 
+                                    $query->where("app_users.business_name", "like", "%" . $request->puesto_area . "%"); 
                                 })
                                 ->whereRaw("( jobs.colony LIKE '%" . $request->location . "%' OR jobs.municipaly LIKE '%" . $request->location . "%' OR jobs.state LIKE '%" . $request->location . "%' )")
                                 ->whereNotIn('id',$ids_by_title)
