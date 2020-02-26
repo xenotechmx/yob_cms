@@ -869,7 +869,7 @@ class APIController extends Controller
         $offset = $request->count_get_jobs * $limit;
         $search_job = $request->search_job;
         $aux=[];
-        foeach($search_job as $k => $v){
+        foreach($search_job as $k => $v){
             $aux[]=$v;
         }
         return response()->json($aux, 200);
