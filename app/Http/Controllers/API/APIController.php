@@ -865,20 +865,15 @@ class APIController extends Controller
         $limit = 8;
         $offset = $request->count_get_jobs * $limit;
 
-
-    
-
-        $manage = json_encode($request->search_job, true);
-        dd($manage);
-
-        if($request->municipio == ''){ //searching without location
-            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->puesto_area . "%")
+        if($request->search_job->municipio == ''){ //searching without location
+            dump($request->puesto_area);
+            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->search_job->puesto_area . "%")
                             ->where("status", "publish")
                             ->where("publish", 1); //jobs by title
             $ids_by_title = $jobs_by_title->pluck('id');
 
             $jobs_by_employer = Job::whereHas("employer", function ($query) use ($request) { 
-                                    $query->where("app_users.business_name", "like", "%" . $request->puesto_area . "%"); 
+                                    $query->where("app_users.business_name", "like", "%" . $request->search_job->puesto_area . "%"); 
                                 })
                                 ->whereNotIn('id',$ids_by_title)
                                 ->where("status", "publish")
