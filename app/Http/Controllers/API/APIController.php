@@ -856,6 +856,61 @@ class APIController extends Controller
     }
 
 
+    public function get_new_jobs_paginated(Request $request)
+    {
+        $response = array();
+        $response["data"] = "";
+        $response["message"] = "";
+
+        $limit = 8;
+        $offset = $request->count_get_jobs * $limit;
+        
+        if($request->municipio == ''){ //searching without location
+            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->search_job->puesto_area . "%")
+                            ->where("status", "publish")
+                            ->where("publish", 1); //jobs by title
+            $ids_by_title = $jobs_by_title->pluck('id');
+
+            $jobs_by_employer = Job::whereHas("employer", function ($query) use ($request) { 
+                                    $query->where("app_users.business_name", "like", "%" . $request->search_job->puesto_area . "%"); 
+                                })
+                                ->whereNotIn('id',$ids_by_title)
+                                ->where("status", "publish")
+                                ->where("publish", 1); //jobs by employer
+
+            dump("here", $jobs_by_title->count(), $jobs_by_employer->count());
+        }
+        else{//searching with location
+            
+            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->search_job->puesto_area . "%")
+                            ->whereRaw("( jobs.colony LIKE '%" . $request->municipio . "%' OR jobs.municipaly LIKE '%" . $request->search_job->municipio . "%' OR jobs.state LIKE '%" . $request->search_job->municipio . "%' )")
+                            ->where("status", "publish")
+                            ->where("publish", 1); //jobs by title
+            $ids_by_title = $jobs_by_title->pluck('id');
+
+            $jobs_by_employer = Job::whereHas("employer", function ($query) use ($request) { 
+                                    $query->where("app_users.business_name", "like", "%" . $request->search_job->puesto_area . "%"); 
+                                })
+                                ->whereRaw("( jobs.colony LIKE '%" . $request->municipio . "%' OR jobs.municipaly LIKE '%" . $request->search_job->municipio . "%' OR jobs.state LIKE '%" . $request->search_job->municipio . "%' )")
+                                ->whereNotIn('id',$ids_by_title)
+                                ->where("status", "publish")
+                                ->where("publish", 1); //jobs by employer
+        }
+        
+        if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0) {
+
+            $jobs_by_title = $jobs_by_title->with(["categories", "employer"])->limit($limit)->offset($offset)->orderBy("highlight_job", "DESC")->orderBy("id", "ASC")->get()->toArray();
+            $jobs_by_employer = $jobs_by_employer->with(["categories", "employer"])->limit($limit)->offset($offset)->orderBy("highlight_job", "DESC")->orderBy("id", "ASC")->get()->toArray();
+
+            $jobs = array_merge($jobs_by_title, $jobs_by_employer);
+            return response()->json($jobs);
+
+        } else {
+            $response["message"] = "No existen empleos con los criterios de búsqueda ingresados.";
+            return response()->json($response, 504);
+        }
+    }
+
     public function get_job(Request $request)
     {
 

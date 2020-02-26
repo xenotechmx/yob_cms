@@ -60,6 +60,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function () {
     Route::post("delete_job", "API\APIController@delete_job");
     Route::post("save_job_to_post_new_object", "API\APIController@save_job_to_post_new_object");
     Route::post("validate_fields_of_job", "API\APIController@validate_fields_of_job");
+    Route::post("get_new_jobs_paginated", "API\APIController@get_new_jobs_paginated");
     Route::post("get_jobs_paginated", "API\APIController@get_jobs_paginated");
     Route::post("get_candidates_by_busines_app_user", "API\APIController@get_candidates_by_busines_app_user");
     Route::post("get_profile_information_with_details", "API\APIController@get_profile_information_with_details");
