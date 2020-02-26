@@ -864,6 +864,7 @@ class APIController extends Controller
         $response = array();
         $response["data"] = "";
         $response["message"] = "";
+        $final_search_job=[];
 
         $limit = 8;
         $offset = $request->count_get_jobs * $limit;
@@ -872,18 +873,20 @@ class APIController extends Controller
         foreach($search_job as $k => $v){
             $aux[]=$v;
         }
-        return response()->json($aux, 200);
 
-        $search_job = trim($search_job,'{}');
-        $search_job = explode(",",$search_job);
-        $final_search_job=[];
+        $final_search_job["puesto_area"]=$aux[0];
+        $final_search_job["empresa"]=$aux[1];
+        $final_search_job["municipio"]=$aux[2];
 
-        foreach($search_job as $k => $v){
-            $v=str_replace(array('"'), '',$v);
-            $v=str_replace(array(':'), '',$v);
-            $parts=explode(" ", trim($v));
-            $final_search_job[$parts[0]] = (isset($parts[1])) ? $parts[1] : '';
-        }
+        // $search_job = trim($search_job,'{}');
+        // $search_job = explode(",",$search_job);
+
+        // foreach($search_job as $k => $v){
+        //     $v=str_replace(array('"'), '',$v);
+        //     $v=str_replace(array(':'), '',$v);
+        //     $parts=explode(" ", trim($v));
+        //     $final_search_job[$parts[0]] = (isset($parts[1])) ? $parts[1] : '';
+        // }
 
         if($final_search_job["municipio"] == ''){ //searching without location
 
