@@ -868,7 +868,7 @@ class APIController extends Controller
         $limit = 8;
         $offset = $request->count_get_jobs * $limit;
         $search_job = $request->search_job;
-        return response()->json($search_job[0], 200);
+        return response()->json($search_job["puesto_area"], 200);
 
         $search_job = trim($search_job,'{}');
         $search_job = explode(",",$search_job);
