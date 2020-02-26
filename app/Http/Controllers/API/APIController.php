@@ -865,34 +865,43 @@ class APIController extends Controller
         $limit = 8;
         $offset = $request->count_get_jobs * $limit;
 
-        if($request->search_job->municipio == ''){ //searching without location
-            dump($request->puesto_area);
-            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->search_job->puesto_area . "%")
+        $search_job = trim($request->search_job,'{}');
+        $search_job = explode(",",$search_job);
+        $final_search_job=[];
+
+        foreach($search_job as $k => $v){
+            $v=str_replace(array('"'), '',$v);
+            $v=str_replace(array(':'), '',$v);
+            $parts=explode(" ", trim($v));
+            $final_search_job[$parts[0]] = (isset($parts[1])) ? $parts[1] : '';
+        }
+
+        if($final_search_job["municipio"] == ''){ //searching without location
+
+            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $final_search_job["puesto_area"] . "%")
                             ->where("status", "publish")
                             ->where("publish", 1); //jobs by title
             $ids_by_title = $jobs_by_title->pluck('id');
 
-            $jobs_by_employer = Job::whereHas("employer", function ($query) use ($request) { 
-                                    $query->where("app_users.business_name", "like", "%" . $request->search_job->puesto_area . "%"); 
+            $jobs_by_employer = Job::whereHas("employer", function ($query) use ($final_search_job) { 
+                                    $query->where("app_users.business_name", "like", "%" . $final_search_job["puesto_area"]. "%"); 
                                 })
                                 ->whereNotIn('id',$ids_by_title)
                                 ->where("status", "publish")
                                 ->where("publish", 1); //jobs by employer
-
-            dump($jobs_by_title->count(), $jobs_by_employer->count());
         }
         else{//searching with location
             
-            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->puesto_area . "%")
-                            ->whereRaw("( jobs.colony LIKE '%" . $request->municipio . "%' OR jobs.municipaly LIKE '%" . $request->municipio . "%' OR jobs.state LIKE '%" . $request->municipio . "%' )")
+            $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $final_search_job["puesto_area"] . "%")
+                            ->whereRaw("( jobs.colony LIKE '%" . $final_search_job["municipio"] . "%' OR jobs.municipaly LIKE '%" . $final_search_job["municipio"] . "%' OR jobs.state LIKE '%" . $final_search_job["municipio"] . "%' )")
                             ->where("status", "publish")
                             ->where("publish", 1); //jobs by title
             $ids_by_title = $jobs_by_title->pluck('id');
 
-            $jobs_by_employer = Job::whereHas("employer", function ($query) use ($request) { 
-                                    $query->where("app_users.business_name", "like", "%" . $request->puesto_area . "%"); 
+            $jobs_by_employer = Job::whereHas("employer", function ($query) use ($final_search_job) { 
+                                    $query->where("app_users.business_name", "like", "%" . $final_search_job["puesto_area"] . "%"); 
                                 })
-                                ->whereRaw("( jobs.colony LIKE '%" . $request->municipio . "%' OR jobs.municipaly LIKE '%" . $request->municipio . "%' OR jobs.state LIKE '%" . $request->municipio . "%' )")
+                                ->whereRaw("( jobs.colony LIKE '%" . $final_search_job["municipio"] . "%' OR jobs.municipaly LIKE '%" . $final_search_job["municipio"] . "%' OR jobs.state LIKE '%" . $final_search_job["municipio"] . "%' )")
                                 ->whereNotIn('id',$ids_by_title)
                                 ->where("status", "publish")
                                 ->where("publish", 1); //jobs by employer
