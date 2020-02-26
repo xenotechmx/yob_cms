@@ -858,8 +858,8 @@ class APIController extends Controller
 
     public function get_new_jobs_paginated(Request $request)
     {
-        $response = $request->search_job;
-        return response()->json($response, 200);
+        // $response = $request->search_job;
+        // return response()->json($response, 200);
 
         $response = array();
         $response["data"] = "";
