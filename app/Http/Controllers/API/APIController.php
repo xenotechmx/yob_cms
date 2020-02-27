@@ -1710,8 +1710,8 @@ class APIController extends Controller
         //message
         $do_post_job = $this->use_credits($credits_to_use, $request->package_id_choosed);
 
-        //Si se descontaron los creditos
-        if ($do_post_job["enough_credits"]) {
+        //Si se descontaron los creditos o si es el usuario 911
+        if ($do_post_job["enough_credits"] || $request->app_user_id == 197) {
 
             $job_disbaled_at = Carbon::now()->addDays($package->original_duration_in_days);
             $job->disbaled_at = $job_disbaled_at->format("Y-m-d H:i:s");
