@@ -26,7 +26,7 @@ class NewSearchJobRequest extends FormRequest
 
         $rules = array();
 
-        if($this->puesto_area == "" && $this->location == ""){
+        if($this->puesto_area == "" && $this->municipio == ""){
             $rules["parameter"] = "required";
         }
 
