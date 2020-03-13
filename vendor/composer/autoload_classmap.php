@@ -1992,6 +1992,7 @@ return array(
     'MetodikaTI\\Http\\Requests\\API\\EditEmployeRequest' => $baseDir . '/app/Http/Requests/API/EditEmployeRequest.php',
     'MetodikaTI\\Http\\Requests\\API\\LoginUserRequest' => $baseDir . '/app/Http/Requests/API/LoginUserRequest.php',
     'MetodikaTI\\Http\\Requests\\API\\MakePaymentCardRequest' => $baseDir . '/app/Http/Requests/API/MakePaymentCardRequest.php',
+    'MetodikaTI\\Http\\Requests\\API\\NewSearchJobRequest' => $baseDir . '/app/Http/Requests/API/NewSearchJobRequest.php',
     'MetodikaTI\\Http\\Requests\\API\\PostJobRequest' => $baseDir . '/app/Http/Requests/API/PostJobRequest.php',
     'MetodikaTI\\Http\\Requests\\API\\RecoverPasswordRequest' => $baseDir . '/app/Http/Requests/API/RecoverPasswordRequest.php',
     'MetodikaTI\\Http\\Requests\\API\\SaveJobRequest' => $baseDir . '/app/Http/Requests/API/SaveJobRequest.php',

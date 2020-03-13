@@ -2559,6 +2559,7 @@ class ComposerStaticInite527e24a77eb1cbcc7e7c2a6b95447b2
         'MetodikaTI\\Http\\Requests\\API\\EditEmployeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/API/EditEmployeRequest.php',
         'MetodikaTI\\Http\\Requests\\API\\LoginUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/API/LoginUserRequest.php',
         'MetodikaTI\\Http\\Requests\\API\\MakePaymentCardRequest' => __DIR__ . '/../..' . '/app/Http/Requests/API/MakePaymentCardRequest.php',
+        'MetodikaTI\\Http\\Requests\\API\\NewSearchJobRequest' => __DIR__ . '/../..' . '/app/Http/Requests/API/NewSearchJobRequest.php',
         'MetodikaTI\\Http\\Requests\\API\\PostJobRequest' => __DIR__ . '/../..' . '/app/Http/Requests/API/PostJobRequest.php',
         'MetodikaTI\\Http\\Requests\\API\\RecoverPasswordRequest' => __DIR__ . '/../..' . '/app/Http/Requests/API/RecoverPasswordRequest.php',
         'MetodikaTI\\Http\\Requests\\API\\SaveJobRequest' => __DIR__ . '/../..' . '/app/Http/Requests/API/SaveJobRequest.php',
