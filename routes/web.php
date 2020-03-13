@@ -182,14 +182,14 @@ Route::group(['prefix' => 'cms'], function () {
 
 //Banners
 Route::get('/ad/1', function () {
-    return redirect('http://grupoyob.com/');
+    return redirect('http://www.esem.edu.mx/');
 });
 Route::get('/ad/2', function () {
-    return redirect('http://grupoyob.com/');
+    return redirect('http://www.esem.edu.mx/');
 });
 Route::get('/ad/3', function () {
-    return redirect('http://grupoyob.com/');
+    return redirect('http://www.esem.edu.mx/');
 });
 Route::get('/ad/4', function () {
-    return redirect('http://grupoyob.com/');
+    return redirect('http://www.esem.edu.mx/');
 });
