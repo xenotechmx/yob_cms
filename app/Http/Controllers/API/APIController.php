@@ -2705,7 +2705,7 @@ class APIController extends Controller
         $page = $request->page * $total_items;
 
         $items_puesto = array();
-        $items_puesto = DB::select(DB::RAW('SELECT job_title FROM jobs WHERE job_title is not null AND status = "publish" AND publish = 1 AND job_title LIKE "%' . $request->job_title . '%" GROUP BY job_title ORDER BY job_title LIMIT ' . $page . ', ' . $total_items . ' '));
+        $items_puesto = DB::select(DB::RAW('SELECT job_title FROM jobs WHERE job_title is not null AND status = "publish" AND publish = 1 AND disbaled_at=null AND job_title LIKE "%' . $request->job_title . '%" GROUP BY job_title ORDER BY job_title LIMIT ' . $page . ', ' . $total_items . ' '));
         $items_puesto = array_column($items_puesto, "job_title");
 
         return response()->json($items_puesto);
@@ -2719,7 +2719,7 @@ class APIController extends Controller
         $page = $request->page * $total_items;
 
         $items_business = array();
-        $items_business = DB::select(DB::RAW('SELECT app_users.business_name FROM jobs  JOIN app_users ON app_users.id = jobs.app_user_employe_id WHERE app_users.business_name is not null AND app_users.business_name LIKE "%' . $request->business_name . '%" AND jobs.status = "publish" AND jobs.publish = 1 GROUP BY app_users.id ORDER BY app_users.business_name LIMIT ' . $page . ', ' . $total_items . ' '));
+        $items_business = DB::select(DB::RAW('SELECT app_users.business_name FROM jobs JOIN app_users ON app_users.id = jobs.app_user_employe_id WHERE app_users.business_name is not null AND jobs.disbaled_at=null AND app_users.business_name LIKE "%' . $request->business_name . '%" AND jobs.status = "publish" AND jobs.publish = 1 GROUP BY app_users.id ORDER BY app_users.business_name LIMIT ' . $page . ', ' . $total_items . ' '));
         $items_business = array_column($items_business, "business_name");
 
         return response()->json($items_business);
