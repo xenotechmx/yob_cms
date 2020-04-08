@@ -191,7 +191,7 @@ Route::get('/ad/3', function () {
     return redirect('https://www.instagram.com/mcseguro/');
 });
 Route::get('/ad/4', function () {
-    return redirect('https://www.instagram.com/mcseguro/');
+    return redirect('https://www.facebook.com/AsesoresMonterreySOC/');
 });
 Route::get('/ad/5', function () {
     return redirect('https://www.facebook.com/MD30AGENCY/');
