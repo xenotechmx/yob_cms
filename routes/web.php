@@ -185,7 +185,7 @@ Route::get('/ad/1', function () {
     return redirect('http://www.esem.edu.mx/');
 });
 Route::get('/ad/2', function () {
-    return redirect('https://www.facebook.com/MD30AGENCY/');
+    return redirect('https://web.facebook.com/segurosernestovillarreal');
 });
 Route::get('/ad/3', function () {
     return redirect('https://www.instagram.com/mcseguro/');
