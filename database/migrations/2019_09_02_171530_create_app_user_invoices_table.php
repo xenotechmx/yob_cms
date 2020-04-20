@@ -13,17 +13,17 @@ class CreateAppUserInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('app_user_invoices', function (Blueprint $table) {
-            $table->increments('id');
+        // Schema::create('app_user_invoices', function (Blueprint $table) {
+        //     $table->increments('id');
 
-            $table->text("social_reason");
-            $table->text("comercial_name");
-            $table->text("rfc");
-            $table->text("fiscal_address");
-            $table->text("email_send_invoice");
+        //     $table->text("social_reason");
+        //     $table->text("comercial_name");
+        //     $table->text("rfc");
+        //     $table->text("fiscal_address");
+        //     $table->text("email_send_invoice");
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
     }
 
     /**

@@ -13,21 +13,21 @@ class CreateInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoices', function (Blueprint $table) {
-            $table->increments('id');
+        // Schema::create('invoices', function (Blueprint $table) {
+        //     $table->increments('id');
 
-            $table->integer("packages_buyed_by_users_id");
-            $table->bigInteger("responseCode");
-            $table->text("responseDescription");
-            $table->text("serverTransactionId");
-            $table->timestamp("requestDate");
-            $table->timestamp("responseDate");
-            $table->bigInteger("executionTime");
-            $table->longText("signedXml");
-            $table->text("uuid");
+        //     $table->integer("packages_buyed_by_users_id");
+        //     $table->bigInteger("responseCode");
+        //     $table->text("responseDescription");
+        //     $table->text("serverTransactionId");
+        //     $table->timestamp("requestDate");
+        //     $table->timestamp("responseDate");
+        //     $table->bigInteger("executionTime");
+        //     $table->longText("signedXml");
+        //     $table->text("uuid");
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
     }
 
     /**

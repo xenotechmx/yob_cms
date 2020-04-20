@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChatRoomsTable extends Migration
+class AddOrderToPackageSells extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateChatRoomsTable extends Migration
      */
     public function up()
     {
-        // Schema::create('chat_rooms', function (Blueprint $table) {
-        //     $table->increments('id');
-
-        //     $table->integer("user_1");
-        //     $table->integer("user_2");
-
-        //     $table->timestamps();
-        // });
+        Schema::table('package_sells', function (Blueprint $table) {
+            $table->integer('order')->default(1);
+        });
     }
 
     /**
@@ -30,6 +25,8 @@ class CreateChatRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chat_rooms');
+        Schema::table('package_sells', function (Blueprint $table) {
+            $table->dropColumn(['order']);
+        });
     }
 }

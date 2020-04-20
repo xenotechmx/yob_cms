@@ -17,10 +17,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="table_principal" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="table_principal" order-by='Orden' class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Orden</th>
                                     <th>Nombre</th>
                                     <th>Días de duración del plan</th>
                                     <th>Empleos permitidos para publicar</th>
@@ -35,6 +36,7 @@
                                 @foreach($data as $item)
                                     <tr>
                                         <td>{{ $item->id  }}</td>
+                                        <td>{{ $item->order  }}</td>
                                         <td>{{ $item->name  }}</td>
                                         <td>{{ $item->duration_plan_in_days  }}</td>
                                         <td>{{ ($item->total_jobs_to_post == -1) ? "Ilimitado" : $item->total_jobs_to_post }}</td>
