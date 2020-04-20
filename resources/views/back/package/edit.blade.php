@@ -20,6 +20,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Orden de aparición</label>
+                    {{ Form::text('order', $data->order, ['class' => 'form-control']) }}
+                </div>
+
+                <div class="form-group">
                     <label>Días de duración del plan</label>
                     {{ Form::number('duration_plan_in_days', $data->duration_plan_in_days, ['class' => 'form-control']) }}
                 </div>

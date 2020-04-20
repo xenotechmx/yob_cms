@@ -14,7 +14,7 @@ class PackageSellController extends Controller
 
     public function index(){
 
-        $data = PackageSell::get();
+        $data = PackageSell::orderBy('order','asc')->get();
         return view("back.package.index", ["data" => $data, "permitions" => URI::checkPermitions()]);
     }
 
@@ -35,6 +35,7 @@ class PackageSellController extends Controller
 
         $package = new PackageSell();
         $package->name = $request->name;
+        $package->order = $request->order;
         $package->duration_plan_in_days = $request->duration_plan_in_days;
 
         if( $request->ilimited_total_jobs_to_post == null ){
@@ -94,6 +95,7 @@ class PackageSellController extends Controller
 
         $package = PackageSell::find($id);
         $package->name = $request->name;
+        $package->order = $request->order;
         $package->duration_plan_in_days = $request->duration_plan_in_days;
 
         if( $request->ilimited_total_jobs_to_post == null ){

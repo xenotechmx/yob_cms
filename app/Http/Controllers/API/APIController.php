@@ -1242,7 +1242,7 @@ class APIController extends Controller
     public function get_job_plans(Request $request)
     {
 
-        $data = PackageSell::orderBy("price", "ASC")->get();
+        $data = PackageSell::orderBy("order", "ASC")->get();
 
         return response()->json($data);
     }
