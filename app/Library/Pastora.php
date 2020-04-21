@@ -203,51 +203,57 @@ class Pastora
         $instructions = array();
         $instructions["action"] = (isset($notification["ACTION"]) ? $notification["ACTION"] : "");
 
-        $fcmMsg = array(
-            'body' => $notification["TEXTO_NOTIFICACION"],
-            'title' => $notification["TITLE"],
-            'subtitle' => "Yob",
-            'sound' => "default",
-            'action' => 'some value',
-        );
-
         if (is_array($notification["UUID"])) {
 
-            $fcmFields = array(
-                'registration_ids' => $notification["UUID"],
-                'priority' => 'normal',
-                'data' => $instructions,
-                'notification' => $fcmMsg
-            );
+            foreach($notification["UUID"] as $uuid){
+                $message = [
+                    'notification' => [
+                        'title' => $notification["TITLE"],
+                        'body' => $notification["TEXTO_NOTIFICACION"],
+                        "text" => $notification["TEXTO_NOTIFICACION"]
+                    ],
+                    'to' => $uuid,
+                    "priority"=> "high",
+                ];
+        
+                $client = new GuzzleHttp\Client([
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                        'Authorization' => 'key='.$API_ACCESS_KEY,
+                    ]
+                ]);
+        
+                $response = $client->post('https://fcm.googleapis.com/fcm/send',
+                    ['body' => json_encode($message)]
+                );
+        
+                return $response->getBody();
+            }
 
         } else {
-
-            $fcmFields = array(
+            $message = [
+                'notification' => [
+                    'title' => $notification["TITLE"],
+                    'body' => $notification["TEXTO_NOTIFICACION"],
+                    "text" => $notification["TEXTO_NOTIFICACION"]
+                ],
                 'to' => $notification["UUID"],
-                'priority' => 'normal',
-                'data' => $instructions,
+                "priority"=> "high",
+            ];
+    
+            $client = new GuzzleHttp\Client([
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'key='.$API_ACCESS_KEY,
+                ]
+            ]);
+    
+            $response = $client->post('https://fcm.googleapis.com/fcm/send',
+                ['body' => json_encode($message)]
             );
-
+    
+            return $response->getBody();
         }
-
-        $headers = array(
-            'Authorization: key=' . $API_ACCESS_KEY,
-            'Content-Type: application/json'
-        );
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmFields));
-        $result = curl_exec($ch);
-        curl_close($ch);
-
-        $result = json_decode($result);
-
-        return $result;
     }
 
 
