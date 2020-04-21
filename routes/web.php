@@ -180,6 +180,10 @@ Route::group(['prefix' => 'cms'], function () {
 
 });
 
+//Test
+Route::get('testfirebase', 'TestController@test');
+
+
 //Banners
 Route::get('/ad/1', function () {
     return redirect('http://www.esem.edu.mx/');
