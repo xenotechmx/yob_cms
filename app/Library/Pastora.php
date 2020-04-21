@@ -198,7 +198,7 @@ class Pastora
     public static function sendPushNotification($notification)
     {
 
-        $API_ACCESS_KEY = env('SERVER_KEY_FIREBASE');
+        $API_ACCESS_KEY = 'AAAAEe2eHOE:APA91bF-_KM1CNWYNdTXTvdPkNcwFY_WmZICpwfsWunfHga1RoGzBto9znVEN_Q1KfBm7Cf8UKvzUJjOYeazkxUuZnkMbcK3v7a51pthHxTHgvjXluASOJ90nJJTzCr4ZZx7PGTr8al3';
 
         $instructions = array();
         $instructions["action"] = (isset($notification["ACTION"]) ? $notification["ACTION"] : "");
