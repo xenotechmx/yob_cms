@@ -2,7 +2,7 @@
 
 use Auth;
 use Carbon\Carbon;
-use GuzzleHttp\Psr7\Request;
+use GuzzleHttp;
 use Illuminate\Support\Facades\Mail;
 use LaravelQRCode\Facades\QRCode;
 use MetodikaTI\AppUser;
