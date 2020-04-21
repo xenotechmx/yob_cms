@@ -200,7 +200,6 @@ class Pastora
 
         $API_ACCESS_KEY = 'AAAAEe2eHOE:APA91bF-_KM1CNWYNdTXTvdPkNcwFY_WmZICpwfsWunfHga1RoGzBto9znVEN_Q1KfBm7Cf8UKvzUJjOYeazkxUuZnkMbcK3v7a51pthHxTHgvjXluASOJ90nJJTzCr4ZZx7PGTr8al3';
 
-        $notification["UUID"] = "diQnn-pXn40:APA91bFzTAE7LA-zNoEeWhLVOXgH0rzhVjE7aIhJMuxKMR6GPQ_ePEOFgjWpcTjP-Wgnm2AvFYpFl2IHM-rkIfEr2fKmsKqE7AoZtK6P7bSpMYbunnZvL6xuoh_KOjVxF_uRtKgTFAMF";
         $instructions = array();
         $instructions["action"] = (isset($notification["ACTION"]) ? $notification["ACTION"] : "");
 
