@@ -22,18 +22,32 @@ class TestController extends Controller
 {
     public function test(){
 
+        $job = Job::find(10183);
+        $empresa = AppUser::find(3086);
+        $candidato = AppUser::find(1453);
+
+        dump("los uuids", $empresa->getUuids());
+
+        //Enviamos la notificacion push a la empresa
+        $notification = array();
+        $notification["UUID"] = $empresa->getUuids();
+        $notification["TEXTO_NOTIFICACION"] = "Tienes un nuevo candidato en tu vacante '" . $job->job_title . "'. Ingresa a la aplicación para más información.";
+        $notification["TITLE"] = "Tienes un candidato postulado a tu vacante";
+        $notification["ACTION"] = array("open_profile" => $candidato->id);
+
+
         $API_ACCESS_KEY = 'AAAAEe2eHOE:APA91bF-_KM1CNWYNdTXTvdPkNcwFY_WmZICpwfsWunfHga1RoGzBto9znVEN_Q1KfBm7Cf8UKvzUJjOYeazkxUuZnkMbcK3v7a51pthHxTHgvjXluASOJ90nJJTzCr4ZZx7PGTr8al3';
 
-        $notification = array();
-        $notification["UUID"] = "diQnn-pXn40:APA91bFzTAE7LA-zNoEeWhLVOXgH0rzhVjE7aIhJMuxKMR6GPQ_ePEOFgjWpcTjP-Wgnm2AvFYpFl2IHM-rkIfEr2fKmsKqE7AoZtK6P7bSpMYbunnZvL6xuoh_KOjVxF_uRtKgTFAMF";
-        $notification["TEXTO_NOTIFICACION"] = "Tienes un nuevo candidato en tu vacante Ingresa a la aplicación para más información.";
-        $notification["TITLE"] = "Tienes un candidato postulado a tu vacante";
-        
-
+        $instructions = array();
+        $instructions["action"] = (isset($notification["ACTION"]) ? $notification["ACTION"] : "");
 
         if (is_array($notification["UUID"])) {
+            
+            dump("in is array");
 
             foreach($notification["UUID"] as $uuid){
+                dump ("uuid", $uuid);
+
                 $message = [
                     'notification' => [
                         'title' => $notification["TITLE"],
@@ -55,7 +69,7 @@ class TestController extends Controller
                     ['body' => json_encode($message)]
                 );
         
-                echo $response->getBody();
+                //return $response->getBody();
             }
 
         } else {
@@ -80,39 +94,7 @@ class TestController extends Controller
                 ['body' => json_encode($message)]
             );
     
-            echo $response->getBody();
-
+            return $response->getBody();
         }
-
-
-        
-
-
-        // $access_token = 'AAAAEe2eHOE:APA91bF-_KM1CNWYNdTXTvdPkNcwFY_WmZICpwfsWunfHga1RoGzBto9znVEN_Q1KfBm7Cf8UKvzUJjOYeazkxUuZnkMbcK3v7a51pthHxTHgvjXluASOJ90nJJTzCr4ZZx7PGTr8al3';
-
-        // $reg_id = 'diQnn-pXn40:APA91bFzTAE7LA-zNoEeWhLVOXgH0rzhVjE7aIhJMuxKMR6GPQ_ePEOFgjWpcTjP-Wgnm2AvFYpFl2IHM-rkIfEr2fKmsKqE7AoZtK6P7bSpMYbunnZvL6xuoh_KOjVxF_uRtKgTFAMF';
-
-        // $message = [
-        //     'notification' => [
-        //         'title' => 'Test Message',
-        //         'body' => "This is a test!",
-        //         "text" => "Text"
-        //     ],
-        //     'to' => $reg_id,
-        //     "priority"=> "high",
-        // ];
-
-        // $client = new GuzzleHttp\Client([
-        //     'headers' => [
-        //         'Content-Type' => 'application/json',
-        //         'Authorization' => 'key='.$access_token,
-        //     ]
-        // ]);
-
-        // $response = $client->post('https://fcm.googleapis.com/fcm/send',
-        //     ['body' => json_encode($message)]
-        // );
-
-        // echo $response->getBody();
     }
 }
