@@ -227,9 +227,9 @@ class Pastora
                     ['body' => json_encode($message)]
                 );
         
-                return $response->getBody();
+                //return $response->getBody();
             }
-
+            return $response->getBody();
         } else {
             $message = [
                 'notification' => [
