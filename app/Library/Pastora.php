@@ -229,7 +229,7 @@ class Pastora
         
                 //return $response->getBody();
             }
-            return $response->getBody();
+            
         } else {
             $message = [
                 'notification' => [
