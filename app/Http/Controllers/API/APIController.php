@@ -1744,6 +1744,7 @@ class APIController extends Controller
             ->leftJoin("profile_user_buyeds", "profile_user_buyeds.app_user_id", "=", "app_users.id")
             ->where("jobs.app_user_employe_id", $request->app_user_id)
             ->orderBy("job_user_applies.created_at", "DESC")
+            ->groupBy("job_user_applies.id")
             ->get(["job_user_applies.created_at as fecha_postulado", "profile_user_buyeds.id as profile_buyed", "jobs.job_title", "app_users.*"]);
 
         foreach ($users_postulated as $key => $value) {
