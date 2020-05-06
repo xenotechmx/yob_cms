@@ -16,9 +16,13 @@
         "jquery": ">=3.5.0",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
-        "vue": "^2.5.7"
+        "vue": "^2.5.7",
+        "bootstrap": ">=4.3.1",
+        "jquery": ">=3.5.0"
     },
     "dependencies": {
-        "bootstrap-year-calendar": "^1.1.1"
+        "bootstrap-year-calendar": "^1.1.1",
+        "jquery": ">=3.5.0",
+        "bootstrap": ">=4.3.1"
     }
 }
