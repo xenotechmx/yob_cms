@@ -13,6 +13,7 @@ class ParentCategory extends Model
     protected $fillable = ['category', 'created_at', 'updated_at'];
 
     public function categories(){
-        return $this->hasMany('MetodikaTI\Category', 'category', 'id');
+        return $this->belongsToMany('\MetodikaTI\Category','category_has_parentcategory')
+            ->withPivot('category_id','parent_category_id'); 
     }
 }

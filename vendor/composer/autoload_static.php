@@ -2862,6 +2862,7 @@ class ComposerStaticInite527e24a77eb1cbcc7e7c2a6b95447b2
         'MetodikaTI\\BussinesInformation' => __DIR__ . '/../..' . '/app/BussinesInformation.php',
         'MetodikaTI\\BussinesInvoice' => __DIR__ . '/../..' . '/app/BussinesInvoice.php',
         'MetodikaTI\\Category' => __DIR__ . '/../..' . '/app/Category.php',
+        'MetodikaTI\\Category_Has_ParentCategory' => __DIR__ . '/../..' . '/app/Category_Has_ParentCategory.php',
         'MetodikaTI\\ChatRoom' => __DIR__ . '/../..' . '/app/ChatRoom.php',
         'MetodikaTI\\Console\\Commands\\CheckPaymentPendingWithCard' => __DIR__ . '/../..' . '/app/Console/Commands/CheckPaymentPendingWithCard.php',
         'MetodikaTI\\Console\\Commands\\CheckPaymentPendingWithOxxo' => __DIR__ . '/../..' . '/app/Console/Commands/CheckPaymentPendingWithOxxo.php',

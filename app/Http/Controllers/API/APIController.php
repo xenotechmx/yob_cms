@@ -1482,13 +1482,15 @@ class APIController extends Controller
 
         $response = array();
         $response["categories"] = "";
+        $response["parent_categories"] = "";
         $response["school_grades"] = "";
         $response["languages"] = "";
 
         //Obtenemos todos los estados, municipios y colonias
         //$states     = PostalCode::groupBy("Estado")->get(["Estado"])->toArray();
 
-        $response["categories"] = Category::get();
+        $response["categories"] = Category::with('parent_categories')->orderBy('category','asc')->get();
+        $response["parent_categories"] = ParentCategory::with('categories')->orderBy('category','asc')->get();
         $response["school_grades"] = SchoolGrade::get();
         $response["languages"] = Language::get();
         //$response["states"] = $states;
