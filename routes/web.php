@@ -50,8 +50,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function () {
     Route::post("get_job_by_employer", "API\APIController@get_job_by_employer");
     Route::post("get_job_information", "API\APIController@get_job_information");
     Route::post("get_job_categories", "API\APIController@get_job_categories");
-    Route::post("save_job", "API\APIController@save_job");
-    Route::post("get_job_categories", "API\APIController@get_job_categories");
+    Route::post("get_parent_job_categories", "API\APIController@get_parent_job_categories");
+    Route::post("save_job", "API\APIController@save_job");    
     Route::post("get_school_categories", "API\APIController@get_school_categories");
     Route::post("get_data_new_job", "API\APIController@get_data_new_job");
     Route::post("save_job_to_post", "API\APIController@save_job_to_post");
