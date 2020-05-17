@@ -2264,6 +2264,7 @@ return array(
     'MetodikaTI\\BussinesInformation' => $baseDir . '/app/BussinesInformation.php',
     'MetodikaTI\\BussinesInvoice' => $baseDir . '/app/BussinesInvoice.php',
     'MetodikaTI\\Category' => $baseDir . '/app/Category.php',
+    'MetodikaTI\\Category_Has_ParentCategory' => $baseDir . '/app/Category_Has_ParentCategory.php',
     'MetodikaTI\\ChatRoom' => $baseDir . '/app/ChatRoom.php',
     'MetodikaTI\\Console\\Commands\\CheckPaymentPendingWithCard' => $baseDir . '/app/Console/Commands/CheckPaymentPendingWithCard.php',
     'MetodikaTI\\Console\\Commands\\CheckPaymentPendingWithOxxo' => $baseDir . '/app/Console/Commands/CheckPaymentPendingWithOxxo.php',
