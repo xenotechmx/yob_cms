@@ -1,7 +1,10 @@
 {
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -12,7 +15,7 @@
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.0",
         "intervention/image": "^2.3",
-        "laravel/framework": "5.5",
+        "laravel/framework": "^5.8.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
         "maatwebsite/excel": "^3.1",
@@ -65,3 +68,4 @@
         "optimize-autoloader": true
     }
 }
+

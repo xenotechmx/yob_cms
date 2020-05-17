@@ -14,6 +14,7 @@ use MetodikaTI\BussinesAddress;
 use MetodikaTI\BussinesInformation;
 use MetodikaTI\BussinesInvoice;
 use MetodikaTI\Category;
+use MetodikaTI\ParentCategory;
 use MetodikaTI\ChatRoom;
 use MetodikaTI\CodigosPostales;
 use MetodikaTI\Experience;
@@ -1452,7 +1453,7 @@ class APIController extends Controller
 
     public function get_parent_job_categories()
     {
-        $categories = ParentCategories::get();
+        $categories = ParentCategory::get();
 
         return response()->json($categories);
     }
