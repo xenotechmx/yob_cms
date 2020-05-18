@@ -770,7 +770,7 @@ class APIController extends Controller
                 }
             }
 
-            return response()->json($parentCategoriesToSearch);
+            $parentCategoriesToSearch = array_unique($parentCategoriesToSearch);
 
             $jobs_by_categories =   Job::whereHas("categories", function($query)use($parentCategoriesToSearch){ 
                                         $query->whereHas("parent_categories", function($query2)use($parentCategoriesToSearch){ 
@@ -781,14 +781,13 @@ class APIController extends Controller
                                     ->whereNotIn('id',$ids_by_employer)
                                     ->where("status", "publish")
                                     ->where("publish", 1); //jobs_by_categories
-
-            return response()->json($jobs_by_categories);
         //end of searching categories
         
         if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0 || $jobs_by_categories->count > 0) {
 
             $jobs_by_title = $jobs_by_title->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
             $jobs_by_employer = $jobs_by_employer->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
+            $jobs_by_categories = $jobs_by_categories->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
 
             $jobs = array_merge($jobs_by_title, $jobs_by_employer, $jobs_by_categories);
             return response()->json($jobs);
