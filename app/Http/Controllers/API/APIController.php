@@ -733,6 +733,15 @@ class APIController extends Controller
                                 ->where("status", "publish")
                                 ->where("publish", 1); //jobs by employer
         }
+
+        //searching categories
+        $categories = Category::where("category", "LIKE", "%" . $request->puesto_area . "%")->get();
+        if(!empty($categories)){
+            dump($categories);
+        }
+        else{
+            dump("empty");
+        }
         
         if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0) {
 
