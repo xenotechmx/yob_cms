@@ -755,8 +755,9 @@ class APIController extends Controller
             foreach($parentCategories as $category){
                 array_push($parentCategoriesToSearch,$parent_category->id);
             }
-            return response()->json($parentCategoriesToSearch);
         }
+
+        return response()->json($parentCategoriesToSearch);
         
         if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0) {
 
