@@ -717,6 +717,7 @@ class APIController extends Controller
                                 ->whereNotIn('id',$ids_by_title)
                                 ->where("status", "publish")
                                 ->where("publish", 1); //jobs by employer
+            $ids_by_employer = $jobs_by_employer->pluck('id');
         }
         else{//searching with location
             $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->puesto_area . "%")
@@ -732,16 +733,17 @@ class APIController extends Controller
                                 ->whereNotIn('id',$ids_by_title)
                                 ->where("status", "publish")
                                 ->where("publish", 1); //jobs by employer
+            
+            $ids_by_employer = $jobs_by_employer->pluck('id');
         }
 
         //searching categories
+        $parentCategoriesToSearch=[];
         $categories = Category::where("category", "LIKE", "%" . $request->puesto_area . "%")->get();
         if(!empty($categories)){
            
         }
-        else{
-            
-        }
+        
         
         if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0) {
 
