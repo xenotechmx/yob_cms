@@ -739,6 +739,7 @@ class APIController extends Controller
 
         //searching categories
         $parentCategoriesToSearch=[];
+
         $categories = Category::with('parent_categories')->where("category", "LIKE", "%" . $request->puesto_area . "%")->get();
         if(!empty($categories)){            
             foreach($categories as $category){
@@ -746,16 +747,22 @@ class APIController extends Controller
                     array_push($parentCategoriesToSearch,$parent_category->id);
                 }
             }
-            return response()->json($parentCategoriesToSearch);
         }
         
+
+        $parentCategories = ParentCategory::where("category", "LIKE", "%" . $request->puesto_area . "%")->get();
+        if(!empty($parentCategories)){            
+            foreach($parentCategories as $category){
+                array_push($parentCategoriesToSearch,$parent_category->id);
+            }
+            return response()->json($parentCategoriesToSearch);
+        }
         
         if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0) {
 
             $jobs_by_title = $jobs_by_title->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
             $jobs_by_employer = $jobs_by_employer->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
 
-            //$jobs = array_merge($jobs_by_title, $jobs_by_employer);
             $jobs = array_merge($jobs_by_title, $jobs_by_employer);
             return response()->json($jobs);
 
