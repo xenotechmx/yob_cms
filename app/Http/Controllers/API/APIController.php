@@ -739,9 +739,9 @@ class APIController extends Controller
 
         //searching categories
         $parentCategoriesToSearch=[];
-        $categories = Category::where("category", "LIKE", "%" . $request->puesto_area . "%")->get();
+        $categories = Category::with('parent_categories')->where("category", "LIKE", "%" . $request->puesto_area . "%")->get();
         if(!empty($categories)){
-           
+            $test=$categories->parent_categories;
         }
         
         
@@ -750,7 +750,8 @@ class APIController extends Controller
             $jobs_by_title = $jobs_by_title->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
             $jobs_by_employer = $jobs_by_employer->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
 
-            $jobs = array_merge($jobs_by_title, $jobs_by_employer);
+            //$jobs = array_merge($jobs_by_title, $jobs_by_employer);
+            $jobs = array_merge($jobs_by_title, $jobs_by_employer, $test);
             return response()->json($jobs);
 
         } else {
