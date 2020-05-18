@@ -753,7 +753,7 @@ class APIController extends Controller
         $parentCategories = ParentCategory::where("category", "LIKE", "%" . $request->puesto_area . "%")->get();
         if(!empty($parentCategories)){            
             foreach($parentCategories as $category){
-                array_push($parentCategoriesToSearch,$parent_category->id);
+                array_push($parentCategoriesToSearch,$parentCategories->id);
             }
         }
 
