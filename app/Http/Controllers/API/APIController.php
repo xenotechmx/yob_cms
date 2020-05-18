@@ -750,14 +750,24 @@ class APIController extends Controller
         }
         
 
-        $parentCategories = ParentCategory::where("category", "LIKE", "%" . $request->puesto_area . "%")->get();
+        $parentCategories = ParentCategory::where("category", "LIKE", "%" . $request->puesto_area . "%")->whereNotIn('id',$parentCategoriesToSearch)->get();
         if(!empty($parentCategories)){            
             foreach($parentCategories as $parentCategory){
                 array_push($parentCategoriesToSearch,$parentCategory->id);
             }
         }
 
-        return response()->json($parentCategoriesToSearch);
+        $jobs_by_categories =   Job::whereHas("categories", function($query)use($parentCategoriesToSearch){ 
+                                    $query->whereHas("parent_categories", function($query2)use($parentCategoriesToSearch){ 
+                                        $query2->whereIn('id',$parentCategoriesToSearch); 
+                                    });
+                                })
+                                ->whereNotIn('id',$ids_by_title)
+                                ->whereNotIn('id',$ids_by_employer)
+                                ->where("status", "publish")
+                                ->where("publish", 1); //jobs_by_categories
+
+        return response()->json($jobs_by_categories);
         
         if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0) {
 
