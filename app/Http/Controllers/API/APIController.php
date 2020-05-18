@@ -717,6 +717,8 @@ class APIController extends Controller
                                 ->whereNotIn('id',$ids_by_title)
                                 ->where("status", "publish")
                                 ->where("publish", 1); //jobs by employer
+            
+            $ids_by_employer = $jobs_by_employer->pluck('id');
         }
         else{//searching with location
             $jobs_by_title = Job::where("jobs.job_title", "LIKE", "%" . $request->puesto_area . "%")
@@ -732,8 +734,17 @@ class APIController extends Controller
                                 ->whereNotIn('id',$ids_by_title)
                                 ->where("status", "publish")
                                 ->where("publish", 1); //jobs by employer
+
+            $ids_by_employer = $jobs_by_employer->pluck('id');
         }
         
+        //searching categories with the search name
+        $categories = Category::where("category", "LIKE", "%" . $request->puesto_area . "%")->get();
+        if($categories != null){
+            dump("here");
+        }
+
+
         if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0) {
 
             $jobs_by_title = $jobs_by_title->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
@@ -2713,7 +2724,7 @@ class APIController extends Controller
         $page = $request->page * $total_items;
 
         $items_puesto = array();
-        $items_puesto = DB::select(DB::RAW('SELECT job_title FROM jobs WHERE job_title is not null AND status = "publish" AND publish = 1 AND ( disbaled_at IS NULL OR disbaled_at > NOW() ) AND job_title LIKE "%' . $request->job_title . '%" GROUP BY job_title ORDER BY job_title LIMIT ' . $page . ', ' . $total_items . ' '));
+        $items_puesto = DB::select(DB::RAW('SELECT job_title FROM jobs WHERE job_title is not null AND status = "publish" AND publish = 1 AND ( disbaled_at IS NULL OR disbaled_at > NOW() ) AND UPPER(job_title) LIKE "%' . strtoupper($request->job_title) . '%" GROUP BY job_title ORDER BY job_title LIMIT ' . $page . ', ' . $total_items . ' '));
         $items_puesto = array_column($items_puesto, "job_title");
 
         return response()->json($items_puesto);
