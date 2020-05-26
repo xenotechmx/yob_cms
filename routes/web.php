@@ -76,6 +76,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function () {
     Route::post("save_job_as_eraser_obligated_fields", "API\APIController@save_job_as_eraser_obligated_fields");
     Route::post("check_if_job_process_with_plan", "API\APIController@check_if_job_process_with_plan");
  
+    Route::post("get_speciality_to_search", "API\APIController@get_speciality_to_search");
     Route::post("get_job_title_to_search", "API\APIController@get_job_title_to_search");
     Route::post("get_job_business_to_search", "API\APIController@get_job_business_to_search");
     Route::post("get_job_location_to_search", "API\APIController@get_job_location_to_search");

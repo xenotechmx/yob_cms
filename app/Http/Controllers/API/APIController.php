@@ -2768,6 +2768,19 @@ class APIController extends Controller
 
         return response()->json($items_puesto);
     }
+    
+    public function get_speciality_to_search(Request $request)
+    {
+
+        $total_items = 20;
+        $page = $request->page * $total_items;
+
+        $items_speciality = array();
+        $items_speciality = DB::select(DB::RAW('SELECT id,category FROM categories WHERE category is not null AND category LIKE "%' . $request->category_title . '%" GROUP BY category ORDER BY category LIMIT ' . $page . ', ' . $total_items . ' '));
+        $items_speciality = array_column($items_speciality, "category",'id');
+
+        return response()->json($items_speciality);
+    }
 
 
     public function get_job_business_to_search(Request $request)
