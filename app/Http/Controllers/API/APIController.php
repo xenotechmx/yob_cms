@@ -783,7 +783,7 @@ class APIController extends Controller
                                     ->where("publish", 1); //jobs_by_categories
         //end of searching categories
         
-        if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0 || $jobs_by_categories->count > 0) {
+        if ($jobs_by_title->count() > 0 || $jobs_by_employer->count() > 0 || $jobs_by_categories->count() > 0) {
 
             $jobs_by_title = $jobs_by_title->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
             $jobs_by_employer = $jobs_by_employer->with(["categories", "employer"])->orderBy("id", "ASC")->get()->toArray();
