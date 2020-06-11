@@ -72,7 +72,9 @@ class JobsController extends Controller
                 'message' => 'Se ha publicado con éxito el empleo.',
                 'url' => url('cms/dashboard/resports/jobs')
             ];
-
+            
+            $this->send_push_notification_by_near_address_and_speciality($job);
+            
         } else {
 
             $response = [
@@ -154,5 +156,66 @@ class JobsController extends Controller
         return response()->json($response);
     }
 
+    public function send_push_notification_by_near_address_and_speciality($job)
+    {
 
+        $users_ids_already_send_notification = array();
+
+        //Empleos cerca del lugar
+        $app_users = AppUser::where("municipaly", $job->municipaly)->where("notification_near_address", 1)->get();
+        foreach ($app_users as $app_user) {
+
+            //Enviamos la notificacion comentando que se dio de alta un empleo cerca de su municipio
+            $notification = array();
+            $notification["UUID"] = $app_user->getUuids();
+            $notification["TEXTO_NOTIFICACION"] = "Hola " . $app_user->name . ", la empresa " . $job->employer["business_name"] . " ha publicado la vacante '" . $job->job_title . "' cerca de ti. Ingresa a la aplicación para más información.";
+            $notification["TITLE"] = "¡Nueva vacante cerca de ti!";
+            $notification["ACTION"] = array("open_vacante" => $job->id);
+
+            //Almacenamos la notificacion
+            $noti = new Notification();
+            $noti->title = $notification["TITLE"];
+            $noti->text = $notification["TEXTO_NOTIFICACION"];
+            $noti->save();
+
+            $app_user_notification = new AppUserNotification();
+            $app_user_notification->notification_id = $noti->id;
+            $app_user_notification->app_user_id = $app_user->id;
+            $app_user_notification->save();
+
+            Pastora::sendPushNotification($notification);
+        }
+
+
+        //Enviamos la notificacion en caso de que la vacante este entre los intereses del usuario
+        $category = $job->categories["category"];
+        if ($category != "Otros") {
+            $app_users = AppUser::where("speciality_area", "LIKE", "%" . $category . "%")->whereNotIn("id", $users_ids_already_send_notification)->where("notification_by_speciality", 1)->get();
+            foreach ($app_users as $app_user) {
+
+                //Enviamos la notificacion comentando que se dio de alta un empleo cerca de su municipio
+                $notification = array();
+                $notification["UUID"] = $app_user->getUuids();
+                $notification["TEXTO_NOTIFICACION"] = "Hola " . $app_user->name . ", la empresa " . $job->employer["business_name"] . " ha publicado la vacante '" . $job->job_title . "'. Ingresa a la aplicación para más información.";
+                $notification["TITLE"] = "Tal vez esta vacante te interese";
+                $notification["ACTION"] = array("open_vacante" => $job->id);
+
+                //Almacenamos la notificacion
+                $noti = new Notification();
+                $noti->title = $notification["TITLE"];
+                $noti->text = $notification["TEXTO_NOTIFICACION"];
+                $noti->save();
+
+                $app_user_notification = new AppUserNotification();
+                $app_user_notification->notification_id = $noti->id;
+                $app_user_notification->app_user_id = $app_user->id;
+                $app_user_notification->save();
+
+                Pastora::sendPushNotification($notification);
+            }
+
+        }
+
+
+    }
 }
