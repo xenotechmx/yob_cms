@@ -9,6 +9,9 @@ use MetodikaTI\Job;
 use MetodikaTI\Library\Pastora;
 use MetodikaTI\Library\URI;
 use MetodikaTI\PackagesBuyedByUser;
+use MetodikaTI\Notification;
+use MetodikaTI\PushNotification;
+use MetodikaTI\AppUserNotification;
 
 class JobsController extends Controller
 {
