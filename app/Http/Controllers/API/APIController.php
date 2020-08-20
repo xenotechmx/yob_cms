@@ -1661,8 +1661,6 @@ class APIController extends Controller
 
                 DB::commit();
 
-                $this->send_push_notification_by_near_address_and_speciality($job);
-
                 $response["error"] = false;
                 $response["message"] = $status_publish_job->message;
                 return response()->json($response);
@@ -1778,9 +1776,7 @@ class APIController extends Controller
             $job->unpublish_reason = null;
             $job->packages_buyed_by_users_id = $request->package_id_choosed;
             $job->save();
-
-            $this->send_push_notification_by_near_address_and_speciality($job);
-
+            
             $response["error"] = false;
             $response["message"] = "Hemos recibido tu vacante correctamente, podrá ser publicado dentro de las próximas 48 hrs.";
             return response()->json($response);
