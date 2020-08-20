@@ -187,10 +187,10 @@ Route::get('testfirebase', 'TestController@test');
 
 //Banners
 Route::get('/ad/1', function () {
-    return redirect('http://www.esem.edu.mx/');
+    return redirect('https://www.facebook.com/contour.mx/');
 });
 Route::get('/ad/2', function () {
-    return redirect('https://web.facebook.com/segurosernestovillarreal');
+    return redirect('https://www.facebook.com/contour.mx/');
 });
 Route::get('/ad/3', function () {
     return redirect('https://www.instagram.com/mcseguro/');
