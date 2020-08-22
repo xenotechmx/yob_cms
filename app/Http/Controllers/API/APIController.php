@@ -420,19 +420,16 @@ class APIController extends Controller
                 $data->type = "user";
                 $data->apple_id = $request->user;
 
-                if ($data->save()) {
-                    $response["error"] = false;
-                    $response["message"] = "Tu cuenta ha sido creada correctamente.";
-                    $response["user_id"] = $data->id;
-                    $response["name"] = $data->name . " " . $data->father_last_name . " " . $data->mother_last_name;
-                    return response()->json($response);
-                } else {
-                    $response["error"] = true;
-                    $response["message"] = "No hemos podido crear tu cuenta, intentalo nuevamente.";
-                    return response()->json($response, 504);
-                }
+                $data->save();
+                $response["error"] = false;
+                $response["message"] = "Tu cuenta ha sido creada correctamente.";
+                $response["user_id"] = $data->id;
+                $response["name"] = $data->name . " " . $data->father_last_name . " " . $data->mother_last_name;
+                return response()->json($response);
+                
             }catch(\Exception $e){
                 $response["error"] = true;
+                //$response["message"] = "No hemos podido crear tu cuenta, intentalo nuevamente.";
                 $response["message"] = $e->getMessage();
                 return response()->json($response, 504);
              }
