@@ -405,31 +405,37 @@ class APIController extends Controller
             return response()->json($response);
 
         } else {
+            
+            try{
+                //Si no existe lo registramos
+                $data = new AppUser();
+                $data->name = $request->givenName;
+                $data->father_last_name = $request->familyName;
+                $data->mother_last_name = "";
+                $data->email = $request->email;
+                $data->responsable_name = "";
+                $data->phone = "";
+                $data->sign_up_type = "apple";
+                $data->password = "";
+                $data->type = "user";
+                $data->apple_id = $request->user;
 
-            //Si no existe lo registramos
-            $data = new AppUser();
-            $data->name = $request->fullName->givenName;
-            $data->father_last_name = $request->fullName->familyName;
-            $data->mother_last_name = "";
-            $data->email = $request->email;
-            $data->responsable_name = "";
-            $data->phone = "";
-            $data->sign_up_type = "apple";
-            $data->password = "";
-            $data->type = "user";
-            $data->apple_id = $request->user;
-
-            if ($data->save()) {
-                $response["error"] = false;
-                $response["message"] = "Tu cuenta ha sido creada correctamente.";
-                $response["user_id"] = $data->id;
-                $response["name"] = $data->name . " " . $data->father_last_name . " " . $data->mother_last_name;
-                return response()->json($response);
-            } else {
+                if ($data->save()) {
+                    $response["error"] = false;
+                    $response["message"] = "Tu cuenta ha sido creada correctamente.";
+                    $response["user_id"] = $data->id;
+                    $response["name"] = $data->name . " " . $data->father_last_name . " " . $data->mother_last_name;
+                    return response()->json($response);
+                } else {
+                    $response["error"] = true;
+                    $response["message"] = "No hemos podido crear tu cuenta, intentalo nuevamente.";
+                    return response()->json($response, 504);
+                }
+            }catch(\Exception $e){
                 $response["error"] = true;
-                $response["message"] = "No hemos podido crear tu cuenta, intentalo nuevamente.";
-                return response()->json($response, 504);
-            }
+                $response["message"] = $e->getMessage();
+                return response()->json(, 504);
+             }
 
         }
 
