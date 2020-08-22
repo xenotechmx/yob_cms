@@ -434,7 +434,7 @@ class APIController extends Controller
             }catch(\Exception $e){
                 $response["error"] = true;
                 $response["message"] = $e->getMessage();
-                return response()->json(, 504);
+                return response()->json($response, 504);
              }
 
         }
