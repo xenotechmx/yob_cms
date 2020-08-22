@@ -9,6 +9,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function () {
     Route::post("recover_password", "API\APIController@recover_password");
     Route::post("crear_employer", "API\APIController@crear_employer");
     Route::post("create_user_with_facebook", "API\APIController@create_user_with_facebook");
+    Route::post("create_user_with_apple", "API\APIController@create_user_with_apple");
 
 
     Route::post("get_states", "API\APIController@get_states");

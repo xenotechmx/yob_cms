@@ -384,6 +384,58 @@ class APIController extends Controller
     }
 
 
+    public function create_user_with_apple(Request $request)
+    {
+
+        $response = array();
+        $response["error"] = true;
+        $response["message"] = "";
+        $response["user_id"] = 0;
+
+        //Primero revisamos si existe el usuario en la BD, si ya existe solamente devolvemos el user_id
+        $user = AppUser::where("apple_id", $request->user);
+
+        if ($user->count() == 1) {
+
+            $user = $user->first();
+            $response["error"] = false;
+            $response["message"] = "Login con Apple Sign In correctamente";
+            $response["user_id"] = $user->id;
+            $response["name"] = $user->name . " " . $user->father_last_name . " " . $user->mother_last_name;
+            return response()->json($response);
+
+        } else {
+
+            //Si no existe lo registramos
+            $data = new AppUser();
+            $data->name = $request->fullName->givenName;
+            $data->father_last_name = $request->fullName->familyName;
+            $data->mother_last_name = "";
+            $data->email = $request->email;
+            $data->responsable_name = "";
+            $data->phone = "";
+            $data->sign_up_type = "apple";
+            $data->password = "";
+            $data->type = "user";
+            $data->apple_id = $request->user;
+
+            if ($data->save()) {
+                $response["error"] = false;
+                $response["message"] = "Tu cuenta ha sido creada correctamente.";
+                $response["user_id"] = $data->id;
+                $response["name"] = $data->name . " " . $data->father_last_name . " " . $data->mother_last_name;
+                return response()->json($response);
+            } else {
+                $response["error"] = true;
+                $response["message"] = "No hemos podido crear tu cuenta, intentalo nuevamente.";
+                return response()->json($response, 504);
+            }
+
+        }
+
+    }
+
+
     public function get_states()
     {
 
