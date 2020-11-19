@@ -501,7 +501,7 @@ class APIController extends Controller
         $data->speciality_area = implode(",", $request->area_speciality);
         $data->colony = $request->colony;
         $data->disability = $request->disability;
-        //$data->email = $request->email;
+        $data->email = $request->email;
         $data->father_last_name = $request->father_last_name;
         $data->mother_last_name = $request->mother_last_name;
         $data->municipaly = $request->municipaly;
