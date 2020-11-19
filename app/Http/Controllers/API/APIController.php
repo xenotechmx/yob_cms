@@ -375,7 +375,7 @@ class APIController extends Controller
                 return response()->json($response);
             } else {
                 $response["error"] = true;
-                $response["message"] = "No hemos podido crear tu cuenta, intentalo nuevamente..";
+                $response["message"] = "No hemos podido crear tu cuenta, intentalo nuevamente.";
                 return response()->json($response, 504);
             }
 
