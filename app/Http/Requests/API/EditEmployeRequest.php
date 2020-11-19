@@ -47,7 +47,7 @@ class EditEmployeRequest extends FormRequest
         $rules["address.email"] = "required|email";
         $rules["address.phone"] = "required";
 
-        $rules["general_information.email"] = "required|email" . $this->app_user_id;
+        $rules["general_information.email"] = "required|email|unique:app_users,email," . $this->app_user_id;
 
         if ($this->general_information["password"] != "") {
             $rules["general_information.password"] = "required|confirmed";
